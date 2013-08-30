@@ -83,6 +83,10 @@ bool RenderDevice::update()
     if(!this->shader->setShaderUniform(SHADER_UNIFORM_AMBIENT, this->light.getAmbientLight()))
         return false;
 
+    // set texture unit
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_TEXTURE, 0))
+        return false;
+
     this->mesh.Render();
 
     // present the rendered screen
