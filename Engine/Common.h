@@ -14,6 +14,7 @@
 
 // GLM Includes
 #include "glm.hpp"
+#include "gtc/matrix_transform.hpp"
 #include "ext.hpp"
 
 #define INVALID_MATERIAL 0xFFFFFFFF
