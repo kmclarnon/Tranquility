@@ -26,11 +26,40 @@ void Mesh::MeshEntry::Init(const std::vector<Vertex>& Vertices,
 {
     NumIndices = Indices.size();
 
+    // Allocate an OpenGL vertex array object.
+    glGenVertexArrays(1, &VAO);
+
+    // Bind the vertex array object to store all the buffers and vertex attributes we create int it
+    glBindVertexArray(VAO);
+
+    // Generate an ID for the vertex buffer.
     glGenBuffers(1, &VB);
+
+    // Bind the vertex buffer and load the vertex (position, texture, and normal) data into the vertex buffer.
     glBindBuffer(GL_ARRAY_BUFFER, VB);
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), &Vertices[0], GL_STATIC_DRAW);
 
+    // Enable the three vertex array attributes.
+    glEnableVertexAttribArray(0);  // Vertex position.
+    glEnableVertexAttribArray(1);  // Texture coordinates.
+    glEnableVertexAttribArray(2);  // Normals.
+
+    // Specify the location and format of the position portion of the vertex buffer.
+    glBindBuffer(GL_ARRAY_BUFFER, VB);
+    glVertexAttribPointer(0, 3, GL_FLOAT, false, sizeof(Vertex), 0);
+
+    // Specify the location and format of the texture coordinate portion of the vertex buffer
+    glBindBuffer(GL_ARRAY_BUFFER, VB);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)12);
+
+    // Specify the location and format of the normal vector portion of the vertex buffer
+    glBindBuffer(GL_ARRAY_BUFFER, VB);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);
+
+    // Generate an ID for the index buffer.
     glGenBuffers(1, &IB);
+
+    // Bind the index buffer and load the index data into it.
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * NumIndices, &Indices[0], GL_STATIC_DRAW);
 }
@@ -180,17 +209,9 @@ bool Mesh::InitMaterials(const aiScene* pScene, const std::string& Filename)
 
 void Mesh::Render()
 {
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-
-    for (unsigned int i = 0 ; i < m_Entries.size() ; i++) {
-        glBindBuffer(GL_ARRAY_BUFFER, m_Entries[i].VB);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)12);
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Entries[i].IB);
+    for (unsigned int i = 0 ; i < m_Entries.size() ; i++) 
+    {
+        glBindVertexArray(m_Entries[i].VAO);
 
         const unsigned int MaterialIndex = m_Entries[i].MaterialIndex;
 
@@ -201,7 +222,4 @@ void Mesh::Render()
         glDrawElements(GL_TRIANGLES, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);
     }
 
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(2);
 }
