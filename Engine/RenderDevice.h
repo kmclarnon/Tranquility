@@ -20,7 +20,6 @@ public:
 
     void shutdown();
 
-private:
 
 private:
     // test

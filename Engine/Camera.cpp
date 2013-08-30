@@ -8,7 +8,7 @@ Camera::Camera(float fov, int width, int height, float zNear, float zFar)
 {
     this->position = glm::vec3(0.0f, 0.0f, 0.0f);
     this->orientation = glm::quat(0.0f, 0.0f, 1.0f, 0.0f);
-    this->projectionMatrix = glm::perspective(fov, (float)height / (float)width, zNear, zFar);
+    this->projectionMatrix = glm::perspective(fov, (float)width / (float)height, zNear, zFar);
 }
 
 void Camera::update()
