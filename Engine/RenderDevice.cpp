@@ -60,6 +60,9 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
 
 bool RenderDevice::update()
 {
+    static float rotation = 0.0f;
+    glm::mat4 worldMatrix = glm::mat4();
+
     // clear our device for the new scene
     this->device->beginScene(0.5f, 0.5f, 0.5f, 1.0f);
 
@@ -69,8 +72,21 @@ bool RenderDevice::update()
     // Render code goes here
     this->shader->useShader();
 
+    // Update the rotation variable each frame.
+    rotation += 0.0174532925f * 1.0f;
+    if(rotation > 360.0f)
+    {
+        rotation -= 360.0f;
+    }
+
+    // rotate our world matrix
+    worldMatrix = glm::mat4(glm::vec4(cosf(rotation), 0.0, sinf(rotation), 0.0),
+                            glm::vec4(0.0, 1.0, 0.0, 0.0),
+                            glm::vec4(-sinf(rotation), 0.0, cos(rotation), 0.0),
+                            glm::vec4(0.0, 0.0, 0.0, 1.0));
+
     // set our camera matricies
-    if(!this->shader->setShadderCameraUniforms(glm::mat4(), this->camera->getViewMatrix(), this->camera->getProjectionMatrix()))
+    if(!this->shader->setShadderCameraUniforms(worldMatrix, this->camera->getViewMatrix(), this->camera->getProjectionMatrix()))
         return false;
 
     // set our light data
@@ -111,3 +127,4 @@ void RenderDevice::shutdown()
         delete this->shader;
     }
 }
+
