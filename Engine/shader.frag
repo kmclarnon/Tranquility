@@ -1,19 +1,10 @@
 #version 400
 
-/////////////////////
-// INPUT VARIABLES //
-/////////////////////
 in vec2 texCoord;
 in vec3 normal;
 
-//////////////////////
-// OUTPUT VARIABLES //
-//////////////////////
 out vec4 outputColor;
 
-///////////////////////
-// UNIFORM VARIABLES //
-///////////////////////
 uniform sampler2D shaderTexture;
 uniform vec3 lightDirection;
 uniform vec4 diffuseLightColor;

@@ -25,8 +25,6 @@ bool Texture::Load()
     glTexParameterf(m_textureTarget, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     return true;
-
-    return true;
 }
 
 void Texture::Bind(GLenum TextureUnit)

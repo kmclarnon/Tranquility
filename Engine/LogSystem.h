@@ -6,7 +6,7 @@
 class LogSystem
 {
 private:
-    typedef enum LOG_TYPE
+    enum LOG_TYPE
     {
         TYPE_LOG,
         TYPE_WARNING,

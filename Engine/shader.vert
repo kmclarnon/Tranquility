@@ -1,23 +1,14 @@
 #version 400
 
-/////////////////////
-// INPUT VARIABLES //
-/////////////////////
-in vec3 inputPosition;
-in vec2 inputTexCoord;
-in vec3 inputNormal;
+layout (location = 0) in vec3 inputPosition;
+layout (location = 1) in vec2 inputTexCoord;
+layout (location = 2) in vec3 inputNormal;
 
 
-//////////////////////
-// OUTPUT VARIABLES //
-//////////////////////
 out vec2 texCoord;
 out vec3 normal;
 
 
-///////////////////////
-// UNIFORM VARIABLES //
-///////////////////////
 uniform mat4 worldMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
