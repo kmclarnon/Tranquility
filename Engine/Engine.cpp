@@ -7,7 +7,6 @@ Engine::Engine()
     this->renderer = nullptr;
     this->configParser = nullptr;
     this->shaderManager = nullptr;
-    this->assetImporter = nullptr;
     this->logSys = nullptr;
     this->width = 0;
     this->height = 0;
@@ -174,9 +173,6 @@ bool Engine::initServices()
         printf("Failed to initialize log system\n");
         return false;
     }
-
-    // create our asset importer
-    this->assetImporter = std::unique_ptr<AssetImporter>(new AssetImporter(*this->logSys));
 
     // create our configuration file parser
     this->configParser = std::unique_ptr<ConfigParser>(new ConfigParser(*this->logSys));

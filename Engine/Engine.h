@@ -5,7 +5,6 @@
 #include "ConfigParser.h"
 #include "RenderDevice.h"
 #include "Shader.h"
-#include "AssetImporter.h"
 #include "LogSystem.h"
 
 class Engine
@@ -31,7 +30,6 @@ private:
 
     // Services
     std::unique_ptr<LogSystem> logSys;
-    std::unique_ptr<AssetImporter> assetImporter;
     std::unique_ptr<ConfigParser> configParser;
 };
 
