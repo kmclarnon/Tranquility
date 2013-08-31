@@ -64,7 +64,7 @@ void Mesh::MeshEntry::Init(const std::vector<Vertex>& Vertices,
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * NumIndices, &Indices[0], GL_STATIC_DRAW);
 }
 
-Mesh::Mesh()
+Mesh::Mesh() : numVerticies(0), numFaces(0)
 {
 }
 
@@ -103,6 +103,10 @@ bool Mesh::LoadMesh(const std::string& Filename)
     else {
         printf("Error parsing '%s': '%s'\n", Filename.c_str(), Importer.GetErrorString());
     }
+
+    // print debug info
+    printf("Loaded %i verticies\n", this->numVerticies);
+    printf("Loaded %i faces\n", this->numFaces);
 
     return Ret;
 }
@@ -151,6 +155,10 @@ void Mesh::InitMesh(unsigned int Index, const aiMesh* paiMesh)
     }
 
     m_Entries[Index].Init(Vertices, Indices);
+
+    // store debug info
+    this->numVerticies += paiMesh->mNumVertices;
+    this->numFaces += paiMesh->mNumFaces;
 }
 
 bool Mesh::InitMaterials(const aiScene* pScene, const std::string& Filename)
