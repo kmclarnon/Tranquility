@@ -213,3 +213,15 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+################
+##  Assets
+################
+*.jpg
+*.3ds
+*.max
+*.png
+*.fbx
+*.pcx
+*.md2
+*.gif
