@@ -1,6 +1,6 @@
 #include "Model.h"
 
-Model::Model() : position(0.0f, 0.0f, 0.0f), outdated(false) 
+Model::Model() : outdated(false) 
 {
 
 }
@@ -61,11 +61,17 @@ void Model::setScale(float scale)
 
 glm::mat4 Model::getModelMatrix()
 {
+    // check if any changes have been made that would affect our model matrix
     if(this->outdated)
     {
+        // calculate our rotation
         glm::mat4 rotation = glm::toMat4(this->orientation);
+        // calculate model translation
         glm::mat4 translation = glm::translate(glm::mat4(1.0f), this->position);
-        this->modelMatrix = glm::scale(this->scale) * translation * rotation;
+        // calculate our model scale matrix
+        glm::mat4 scale = glm::scale(this->scale);
+        // apply rotation, then translation, and finally scale
+        this->modelMatrix = scale * translation * rotation;
     }
 
     return this->modelMatrix;
