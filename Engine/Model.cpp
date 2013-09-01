@@ -65,7 +65,7 @@ glm::mat4 Model::getModelMatrix()
     {
         glm::mat4 rotation = glm::toMat4(this->orientation);
         glm::mat4 translation = glm::translate(glm::mat4(1.0f), this->position);
-        this->modelMatrix = translation * rotation;
+        this->modelMatrix = glm::scale(this->scale) * translation * rotation;
     }
 
     return this->modelMatrix;
