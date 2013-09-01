@@ -29,7 +29,7 @@ bool Engine::init()
     }
 
     // load our configuration settings
-    if(!this->configParser->loadConfigFile("C:\\Users\\Keivn\\Documents\\GitHub\\TrillekPrototype\\Debug\\settings.ini"))
+    if(!this->configParser->loadConfigFile("settings.ini"))
     {
         this->logSys->error("Failed to initialize log parser");
         return false;
