@@ -42,6 +42,7 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
         return false;
     }
 
+    /*
     // initialize our camera
     this->camera = new Camera(45.0f, width, height, 0.1f, 1000.0f);
     this->camera->setPosition(0.0f, 0.0f, -10.0f);
@@ -54,6 +55,9 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
 
     // load our model
     this->mesh.LoadMesh("Models/cube.obj");
+    */
+
+    this->scene.init(width, height);
 
     return true;
 }
@@ -66,11 +70,11 @@ bool RenderDevice::update()
     // clear our device for the new scene
     this->device->beginScene(0.5f, 0.5f, 0.5f, 1.0f);
 
-    // update our camera
-    this->camera->update();
-
     // Render code goes here
     this->shader->useShader();
+
+    // update our scene (temp)
+    this->scene.update();
 
     // Update the rotation variable each frame.
     rotation += 0.0174532925f * 1.0f;
@@ -86,24 +90,24 @@ bool RenderDevice::update()
                             glm::vec4(0.0, 0.0, 0.0, 1.0));
 
     // set our camera matricies
-    if(!this->shader->setShadderCameraUniforms(worldMatrix, this->camera->getViewMatrix(), this->camera->getProjectionMatrix()))
+    if(!this->shader->setShadderCameraUniforms(worldMatrix, this->scene.getCamera().getViewMatrix(), this->scene.getCamera().getProjectionMatrix()))
         return false;
 
     // set our light data
-    if(!this->shader->setShaderUniform(SHADER_UNIFORM_LIGHT_DIR, this->light.getLightDirection()))
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_LIGHT_DIR, this->scene.getLight().getLightDirection()))
         return false;
 
-    if(!this->shader->setShaderUniform(SHADER_UNIFORM_DIFFUSE_COLOR, this->light.getDiffuseColor()))
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_DIFFUSE_COLOR, this->scene.getLight().getDiffuseColor()))
         return false;
 
-    if(!this->shader->setShaderUniform(SHADER_UNIFORM_AMBIENT, this->light.getAmbientLight()))
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_AMBIENT, this->scene.getLight().getAmbientLight()))
         return false;
 
     // set texture unit
     if(!this->shader->setShaderUniform(SHADER_UNIFORM_TEXTURE, 0))
         return false;
 
-    this->mesh.Render();
+    this->scene.getMesh().Render();
 
     // present the rendered screen
     this->device->endScene();

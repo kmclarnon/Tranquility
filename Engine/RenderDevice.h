@@ -5,9 +5,7 @@
 #include "GLDevice.h"
 #include "Shader.h"
 #include "LogSystem.h"
-#include "Camera.h"
-#include "Mesh.h"
-#include "Light.h"
+#include "Scene.h"
 
 
 class RenderDevice
@@ -23,16 +21,17 @@ public:
 
 private:
     // test
-    GLuint vbo, vao;
-    Mesh mesh;
-    Light light;
+    //Mesh mesh;
+    //Light light;
+    //Camera *camera;
+    Scene scene;
 
     // We do not own this
     LogSystem &logSys;
 
     GLDevice *device;
     Shader *shader;
-    Camera *camera;
+    
 };
 
 #endif
