@@ -107,7 +107,7 @@ bool RenderDevice::update()
     if(!this->shader->setShaderUniform(SHADER_UNIFORM_TEXTURE, 0))
         return false;
 
-    this->scene.getMesh().Render();
+    this->scene.getModel().render();
 
     // present the rendered screen
     this->device->endScene();

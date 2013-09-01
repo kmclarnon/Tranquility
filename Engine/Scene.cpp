@@ -7,6 +7,7 @@ Scene::Scene()
 
 bool Scene::init(int width, int height)
 {
+    // set up our camera
     this->camera.setView(45.0f, width, height, 0.1f, 1000.0f);
     this->camera.setPosition(0.0f, 0.0f, -10.0f);
 
@@ -16,7 +17,11 @@ bool Scene::init(int width, int height)
     this->light.setAmbientLight(0.15f, 0.15f, 0.15f, 1.0f);
 
     // load our model
-    return this->mesh.LoadMesh("Models/cube.obj");
+    bool res = this->model.loadFromFile("Models/cube.obj");
+
+    this->model.setScale(0.5);
+
+    return res;
 }
 
 bool Scene::update()
@@ -36,7 +41,7 @@ Camera& Scene::getCamera()
     return this->camera;
 }
 
-Mesh& Scene::getMesh()
+Model& Scene::getModel()
 {
-    return this->mesh;
+    return this->model;
 }

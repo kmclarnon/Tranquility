@@ -2,7 +2,7 @@
 #define _TRILLEK_SCENE_H_
 
 #include "Common.h"
-#include "Mesh.h"
+#include "Model.h"
 #include "Camera.h"
 #include "Light.h"
 
@@ -17,10 +17,10 @@ public:
 
     Light& getLight();
     Camera& getCamera();
-    Mesh& getMesh();
+    Model& getModel();
 
 private:
-    Mesh mesh;
+    Model model;
     Light light;
     Camera camera;
 };
