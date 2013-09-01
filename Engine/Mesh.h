@@ -9,17 +9,17 @@
 
 struct Vertex
 {
-    glm::vec3 m_pos;
-    glm::vec2 m_tex;
-    glm::vec3 m_normal;
+    glm::vec3 pos;
+    glm::vec2 tex;
+    glm::vec3 normal;
 
     Vertex() {}
 
     Vertex(const glm::vec3& pos, const glm::vec2& tex, const glm::vec3& normal)
     {
-        m_pos    = pos;
-        m_tex    = tex;
-        m_normal = normal;
+        this->pos    = pos;
+        this->tex    = tex;
+        this->normal = normal;
     }
 };
 
@@ -31,15 +31,14 @@ public:
 
     ~Mesh();
 
-    bool LoadMesh(const std::string& Filename);
-
-    void Render();
+    bool loadMesh(const std::string& Filename);
+    void render();
 
 private:
-    bool InitFromScene(const aiScene* pScene, const std::string& Filename);
-    void InitMesh(unsigned int Index, const aiMesh* paiMesh);
-    bool InitMaterials(const aiScene* pScene, const std::string& Filename);
-    void Clear();
+    bool initFromScene(const aiScene* pScene, const std::string& Filename);
+    void initMesh(unsigned int Index, const aiMesh* paiMesh);
+    bool initMaterials(const aiScene* pScene, const std::string& Filename);
+    void clear();
 
 
     struct MeshEntry 

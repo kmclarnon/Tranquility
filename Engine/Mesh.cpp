@@ -71,11 +71,11 @@ Mesh::Mesh() : numVerticies(0), numFaces(0)
 
 Mesh::~Mesh()
 {
-    Clear();
+    clear();
 }
 
 
-void Mesh::Clear()
+void Mesh::clear()
 {
     for (unsigned int i = 0 ; i < m_Textures.size() ; i++) {
         if(m_Textures[i])
@@ -87,10 +87,10 @@ void Mesh::Clear()
 }
 
 
-bool Mesh::LoadMesh(const std::string& Filename)
+bool Mesh::loadMesh(const std::string& Filename)
 {
     // Release the previously loaded mesh (if it exists)
-    Clear();
+    clear();
 
     bool Ret = false;
     Assimp::Importer Importer;
@@ -98,7 +98,7 @@ bool Mesh::LoadMesh(const std::string& Filename)
     const aiScene* pScene = Importer.ReadFile(Filename.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs);
 
     if (pScene) {
-        Ret = InitFromScene(pScene, Filename);
+        Ret = initFromScene(pScene, Filename);
     }
     else {
         printf("Error parsing '%s': '%s'\n", Filename.c_str(), Importer.GetErrorString());
@@ -111,7 +111,7 @@ bool Mesh::LoadMesh(const std::string& Filename)
     return Ret;
 }
 
-bool Mesh::InitFromScene(const aiScene* pScene, const std::string& Filename)
+bool Mesh::initFromScene(const aiScene* pScene, const std::string& Filename)
 {  
     m_Entries.resize(pScene->mNumMeshes);
     m_Textures.resize(pScene->mNumMaterials);
@@ -119,13 +119,13 @@ bool Mesh::InitFromScene(const aiScene* pScene, const std::string& Filename)
     // Initialize the meshes in the scene one by one
     for (unsigned int i = 0 ; i < m_Entries.size() ; i++) {
         const aiMesh* paiMesh = pScene->mMeshes[i];
-        InitMesh(i, paiMesh);
+        initMesh(i, paiMesh);
     }
 
-    return InitMaterials(pScene, Filename);
+    return initMaterials(pScene, Filename);
 }
 
-void Mesh::InitMesh(unsigned int Index, const aiMesh* paiMesh)
+void Mesh::initMesh(unsigned int Index, const aiMesh* paiMesh)
 {
     m_Entries[Index].MaterialIndex = paiMesh->mMaterialIndex;
 
@@ -161,7 +161,7 @@ void Mesh::InitMesh(unsigned int Index, const aiMesh* paiMesh)
     this->numFaces += paiMesh->mNumFaces;
 }
 
-bool Mesh::InitMaterials(const aiScene* pScene, const std::string& Filename)
+bool Mesh::initMaterials(const aiScene* pScene, const std::string& Filename)
 {
     // Extract the directory part from the file name
     std::string::size_type SlashIndex = Filename.find_last_of("/");
@@ -215,7 +215,7 @@ bool Mesh::InitMaterials(const aiScene* pScene, const std::string& Filename)
     return Ret;
 }
 
-void Mesh::Render()
+void Mesh::render()
 {
     for (unsigned int i = 0 ; i < m_Entries.size() ; i++) 
     {
