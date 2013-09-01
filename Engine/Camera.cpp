@@ -4,7 +4,12 @@ const glm::vec3 Camera::FORWARD_VECTOR(0.0f,0.0f,-1.0f);
 const glm::vec3 Camera::UP_VECTOR(0.0f,1.0f,.0f);
 const glm::vec3 Camera::RIGHT_VECTOR(glm::cross(FORWARD_VECTOR, UP_VECTOR));
 
-Camera::Camera(float fov, int width, int height, float zNear, float zFar)
+Camera::Camera()
+{
+
+}
+
+void Camera::setView(float fov, int width, int height, float zNear, float zFar)
 {
     this->position = glm::vec3(0.0f, 0.0f, 0.0f);
     this->orientation = glm::quat(0.0f, 0.0f, 1.0f, 0.0f);

@@ -6,9 +6,10 @@
 class Camera
 {
 public:
-    Camera(float fov, int width, int height, float zNear, float zFar);
+    Camera();
 
     void update();
+    void setView(float fov, int width, int height, float zNear, float zFar);
     void setPosition(float x, float y, float z);
     void move(float right, float up, float forward);
     void rotate(float x, float y, float z);
