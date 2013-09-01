@@ -70,3 +70,8 @@ glm::mat4 Model::getModelMatrix()
 
     return this->modelMatrix;
 }
+
+void Model::render()
+{
+    this->mesh.render();
+}
