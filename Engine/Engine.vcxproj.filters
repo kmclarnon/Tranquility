@@ -39,9 +39,6 @@
     <ClCompile Include="GLDevice.cpp">
       <Filter>Source\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="AssetImporter.cpp">
-      <Filter>Source\Services</Filter>
-    </ClCompile>
     <ClCompile Include="ConfigParser.cpp">
       <Filter>Source\Services</Filter>
     </ClCompile>
@@ -69,6 +66,9 @@
     <ClCompile Include="Light.cpp">
       <Filter>Source\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -81,9 +81,6 @@
       <Filter>Include\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="LogSystem.h">
-      <Filter>Include\Services</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetImporter.h">
       <Filter>Include\Services</Filter>
     </ClInclude>
     <ClInclude Include="ConfigParser.h">
