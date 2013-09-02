@@ -225,3 +225,5 @@ pip-log.txt
 *.pcx
 *.md2
 *.gif
+*.tga
+*.mtl
