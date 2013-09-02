@@ -1,8 +1,8 @@
 #include "configparser.h"
 
-ConfigParser::ConfigParser(LogSystem &log) : logSys(log)
+ConfigParser::ConfigParser(const LogSystem &log) : logSys(log)
 {
-    this->settings = new std::map<std::string, std::string>();
+    this->settings = std::unique_ptr<ConfigMap>(new ConfigMap());
 }
 
 bool ConfigParser::loadConfigFile(std::string file)

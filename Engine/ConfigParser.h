@@ -9,7 +9,7 @@
 class ConfigParser
 {
 public:
-    ConfigParser(LogSystem &logSys);
+    ConfigParser(const LogSystem &logSys);
 
     bool loadConfigFile(std::string file);
 
@@ -19,10 +19,11 @@ public:
     std::pair<int, int> parseResolution(std::string res);
 
 private:
-    std::map<std::string, std::string> *settings;
+    typedef std::map<std::string, std::string> ConfigMap;
+    std::unique_ptr<ConfigMap> settings;
 
     // We do not own this
-    LogSystem &logSys;
+    const LogSystem &logSys;
 };
 
 #endif
