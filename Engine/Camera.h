@@ -26,6 +26,8 @@ private:
     glm::mat4 projectionMatrix;
     glm::vec3 position;
     glm::quat orientation;
+    glm::vec3 up;
+    glm::vec3 forward;
 
     const static glm::vec3 FORWARD_VECTOR;
     const static glm::vec3 UP_VECTOR;

@@ -18,10 +18,15 @@ void Camera::setView(float fov, int width, int height, float zNear, float zFar)
 
 void Camera::update()
 {
+    // normalize our orientation
     glm::normalize(this->orientation);
-    this->viewMat = glm::lookAt(this->position, 
-        this->position + Camera::FORWARD_VECTOR * this->orientation,
-        Camera::UP_VECTOR * this->orientation);
+    
+    // calculate our new up and forward vectors
+    this->up = Camera::UP_VECTOR * this->orientation;
+    this->forward = this->position + (Camera::FORWARD_VECTOR * orientation);
+
+    // calculte our new view matrix
+    this->viewMat = glm::lookAt(this->position, this->forward, this->up); 
 }
 
 glm::mat4 Camera::getViewMatrix() const
@@ -64,4 +69,3 @@ void Camera::rotate(glm::vec3 rot)
 {
     this->rotate(rot.x, rot.y, rot.z);
 }
-
