@@ -29,8 +29,6 @@ class Mesh
 public:
     Mesh();
 
-    ~Mesh();
-
     bool loadMesh(const std::string& Filename);
     void render();
 
@@ -38,7 +36,6 @@ private:
     bool initFromScene(const aiScene* pScene, const std::string& Filename);
     void initMesh(unsigned int Index, const aiMesh* paiMesh);
     bool initMaterials(const aiScene* pScene, const std::string& Filename);
-    void clear();
 
 
     struct MeshEntry 
@@ -49,15 +46,15 @@ private:
         void Init(const std::vector<Vertex>& Vertices,
             const std::vector<unsigned int>& Indices);
 
-        GLuint VB;
-        GLuint IB;
-        GLuint VAO;
+        GLuint vb;
+        GLuint ib;
+        GLuint vao;
         unsigned int NumIndices;
         unsigned int MaterialIndex;
     };
 
-    std::vector<MeshEntry> m_Entries;
-    std::vector<Texture*> m_Textures;
+    std::vector<MeshEntry> entries;
+    std::vector<std::unique_ptr<Texture>> textures;
 
     //debug info
     int numVerticies;
