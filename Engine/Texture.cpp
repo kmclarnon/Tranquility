@@ -7,7 +7,7 @@ Texture::Texture(GLenum TextureTarget, const std::string& FileName) : textureTar
     image        = NULL;
 }
 
-bool Texture::Load()
+bool Texture::load()
 {
     try 
     {
@@ -29,7 +29,7 @@ bool Texture::Load()
     return true;
 }
 
-void Texture::Bind(GLenum TextureUnit) const
+void Texture::bind(GLenum TextureUnit) const
 {
     glActiveTexture(TextureUnit);
     glBindTexture(this->textureTarget, this->textureObj);

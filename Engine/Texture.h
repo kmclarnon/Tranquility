@@ -9,8 +9,8 @@ class Texture
 public:
     Texture(GLenum textureTarget, const std::string& fileName);
 
-    bool Load();
-    void Bind(GLenum TextureUnit) const;
+    bool load();
+    void bind(GLenum TextureUnit) const;
 
 private:
     std::string fileName;

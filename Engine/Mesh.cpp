@@ -184,7 +184,7 @@ bool Mesh::initMaterials(const aiScene* pScene, const std::string& Filename)
                 std::string FullPath = dir + "/" + Path.data;
                 textures[i] = std::unique_ptr<Texture>(new Texture(GL_TEXTURE_2D, FullPath.c_str()));
 
-                if (!textures[i]->Load()) 
+                if (!textures[i]->load()) 
                 {
                     printf("Error loading texture '%s'\n", FullPath.c_str());
                     res = false;
@@ -200,7 +200,7 @@ bool Mesh::initMaterials(const aiScene* pScene, const std::string& Filename)
         if (!textures[i]) 
         {
             textures[i] = std::unique_ptr<Texture>(new Texture(GL_TEXTURE_2D, "white.png"));
-            res = textures[i]->Load();
+            res = textures[i]->load();
         }
     }
 
@@ -216,7 +216,7 @@ void Mesh::render() const
         const unsigned int materialIndex = entries[i].MaterialIndex;
 
         if (materialIndex < textures.size() && textures[materialIndex]) {
-            textures[materialIndex]->Bind(GL_TEXTURE0);
+            textures[materialIndex]->bind(GL_TEXTURE0);
         }
 
         glDrawElements(GL_TRIANGLES, entries[i].NumIndices, GL_UNSIGNED_INT, 0);
