@@ -19,14 +19,14 @@ public:
 
     bool init();
 
-    void log(const char *fmt, ...);
-    void warning(const char *fmt, ...);
-    void error(const char *fmt, ...);
-    void debug(const char *fmt, ...);
+    void log(const char *fmt, ...) const;
+    void warning(const char *fmt, ...) const;
+    void error(const char *fmt, ...) const;
+    void debug(const char *fmt, ...) const;
 
 private:
-    void printFormatted(const char *label, const char *fmt, va_list args);
-    void printTime();
+    void printFormatted(const char *label, const char *fmt, va_list args) const;
+    void printTime() const;
 
 private:
     FILE logFile;

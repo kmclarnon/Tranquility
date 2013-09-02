@@ -12,7 +12,7 @@ bool LogSystem::init()
 }
 
 
-void LogSystem::log(const char * format, ...)
+void LogSystem::log(const char * format, ...) const
 {
     va_list args;
     va_start(args, format);
@@ -20,7 +20,7 @@ void LogSystem::log(const char * format, ...)
     va_end(args);
 }
 
-void LogSystem::warning(const char * format, ...)
+void LogSystem::warning(const char * format, ...) const
 {
     va_list args;
     va_start(args, format);
@@ -28,7 +28,7 @@ void LogSystem::warning(const char * format, ...)
     va_end(args);
 }
 
-void LogSystem::error(const char * format, ...)
+void LogSystem::error(const char * format, ...) const
 {
     va_list args;
     va_start(args, format);
@@ -36,7 +36,7 @@ void LogSystem::error(const char * format, ...)
     va_end(args);
 }
 
-void LogSystem::debug(const char * format, ...)
+void LogSystem::debug(const char * format, ...) const
 {
     va_list args;
     va_start(args, format);
@@ -44,7 +44,7 @@ void LogSystem::debug(const char * format, ...)
     va_end(args);
 }
 
-void LogSystem::printFormatted(const char *label, const char *format, va_list args)
+void LogSystem::printFormatted(const char *label, const char *format, va_list args) const
 {
     this->printTime();
 
@@ -57,7 +57,7 @@ void LogSystem::printFormatted(const char *label, const char *format, va_list ar
     printf("\n");
 }
 
-void LogSystem::printTime()
+void LogSystem::printTime() const
 {
     SYSTEMTIME st;
     GetSystemTime(&st);
