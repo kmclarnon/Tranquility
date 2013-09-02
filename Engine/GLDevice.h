@@ -18,14 +18,11 @@ public:
     void endScene();
 
 private:
-    bool loadExtensions();
-
-private:
     SDL_GLContext context;
 
     // we do not own this
     SDL_Window *window;
-    LogSystem logSys;
+    const LogSystem &logSys;
 };
 
 #endif
