@@ -61,5 +61,5 @@ void LogSystem::printTime() const
 {
     SYSTEMTIME st;
     GetSystemTime(&st);
-    printf("%02d:%02d", st.wHour, st.wMinute);
+    printf("%02d:%02d:%02d", st.wHour, st.wMinute, st.wSecond);
 }
