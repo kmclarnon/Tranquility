@@ -30,7 +30,7 @@ public:
     Mesh();
 
     bool loadMesh(const std::string& Filename);
-    void render();
+    void render() const;
 
 private:
     bool initFromScene(const aiScene* pScene, const std::string& Filename);

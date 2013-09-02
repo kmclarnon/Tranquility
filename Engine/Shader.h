@@ -24,45 +24,45 @@ public:
     bool init();
     void shutdown();
 
-    bool addStage(GLenum type, std::string filename);
-    bool addAttribute(std::string attrib);
-    bool addUniform(std::string uniform);
+    bool addStage(GLenum type, const std::string &filename);
+    bool addAttribute(const std::string &attrib);
+    bool addUniform(const std::string &uniform);
 
     void useShader();
 
 
     // glm convenience functions
-    bool setShaderUniform(std::string name, glm::mat4 val);
-    bool setShaderUniform(std::string name, glm::vec3 val);
-    bool setShaderUniform(std::string name, glm::vec4 val);
-    bool setShadderCameraUniforms(glm::mat4 world, glm::mat4 view, glm::mat4 perspective);
+    bool setShaderUniform(const std::string &name, const glm::mat4 &val);
+    bool setShaderUniform(const std::string &name, const glm::vec3 &val);
+    bool setShaderUniform(const std::string &name, const glm::vec4 &val);
+    bool setShadderCameraUniforms(const glm::mat4 &world, const glm::mat4 &view, const glm::mat4 &perspective);
 
     // openGL call translation functions
-    bool setShaderUniform(std::string name, GLfloat v0);
-    bool setShaderUniform(std::string name, GLfloat v0, GLfloat v1);
-    bool setShaderUniform(std::string name, GLfloat v0, GLfloat v1, GLfloat v2);
-    bool setShaderUniform(std::string name, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-    bool setShaderUniform(std::string name, GLint v0);
-    bool setShaderUniform(std::string name, GLint v0, GLint v1);
-    bool setShaderUniform(std::string name, GLint v0, GLint v1, GLint v2);
-    bool setShaderUniform(std::string name, GLint v0, GLint v1, GLint v2, GLint v3);
-    bool setShaderUniform(std::string name, GLuint v0);
-    bool setShaderUniform(std::string name, GLuint v0, GLuint v1);
-    bool setShaderUniform(std::string name, GLuint v0, GLuint v1, GLuint v2);
-    bool setShaderUniform(std::string name, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
-    bool setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, const GLfloat *value);
-    bool setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, const GLint *value);
-    bool setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, const GLuint *value);
-    bool setShaderUniform(std::string name, GLsizei row, GLsizei column, GLsizei count, GLboolean transpose, const GLfloat *value);
+    bool setShaderUniform(const std::string &name, GLfloat v0);
+    bool setShaderUniform(const std::string &name, GLfloat v0, GLfloat v1);
+    bool setShaderUniform(const std::string &name, GLfloat v0, GLfloat v1, GLfloat v2);
+    bool setShaderUniform(const std::string &name, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+    bool setShaderUniform(const std::string &name, GLint v0);
+    bool setShaderUniform(const std::string &name, GLint v0, GLint v1);
+    bool setShaderUniform(const std::string &name, GLint v0, GLint v1, GLint v2);
+    bool setShaderUniform(const std::string &name, GLint v0, GLint v1, GLint v2, GLint v3);
+    bool setShaderUniform(const std::string &name, GLuint v0);
+    bool setShaderUniform(const std::string &name, GLuint v0, GLuint v1);
+    bool setShaderUniform(const std::string &name, GLuint v0, GLuint v1, GLuint v2);
+    bool setShaderUniform(const std::string &name, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+    bool setShaderUniform(const std::string &name, GLsizei uniSize, GLsizei len, const GLfloat *value);
+    bool setShaderUniform(const std::string &name, GLsizei uniSize, GLsizei len, const GLint *value);
+    bool setShaderUniform(const std::string &name, GLsizei uniSize, GLsizei len, const GLuint *value);
+    bool setShaderUniform(const std::string &name, GLsizei row, GLsizei column, GLsizei count, GLboolean transpose, const GLfloat *value);
     
 private:
     bool loadComponent(GLenum type, ShaderDesc &desc);
-    bool loadFromFile(std::string vertFilename, std::string fragFilename);
-    bool loadComponentContents(std::string filename, std::string &contents);
-    bool compileComponent(int &id, GLenum type, std::string filename);
+    bool loadFromFile(const std::string &vertFilename, const std::string &fragFilename);
+    bool loadComponentContents(const std::string &filename, std::string &contents);
+    bool compileComponent(int &id, GLenum type, const std::string &filename);
     void attachComponent(ShaderDesc desc);
     bool linkShader();
-    bool getUniformLoc(std::string name, GLint &loc);
+    bool getUniformLoc(const std::string &name, GLint &loc);
     void cleanup();
     void getShaderError(int componentId);
     

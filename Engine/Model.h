@@ -11,6 +11,8 @@ public:
 
     bool loadFromFile(const std::string &fileName);
 
+    void update();
+
     void setPosition(float x, float y, float z);
     void setPosition(const glm::vec3 &pos);
     glm::vec3 getPosition() const;
@@ -23,9 +25,8 @@ public:
     void setScale(const glm::vec3 &scale);
     void setScale(float scale);
 
-    glm::mat4 getModelMatrix();
-
-    void render();
+    const glm::mat4& getModelMatrix() const;
+    void render() const;
 
 private:
     Mesh mesh;

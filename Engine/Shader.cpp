@@ -48,7 +48,7 @@ bool Shader::init()
     return true;
 }
 
-bool Shader::addStage(GLenum type, std::string filename)
+bool Shader::addStage(GLenum type, const std::string &filename)
 {
     ShaderDesc desc;
 
@@ -63,7 +63,7 @@ bool Shader::addStage(GLenum type, std::string filename)
     return true;
 }
 
-bool Shader::addAttribute(std::string attrib)
+bool Shader::addAttribute(const std::string &attrib)
 {
     const char* att = attrib.c_str();
     int loc = glGetAttribLocation(this->shaderId, att);
@@ -83,7 +83,7 @@ bool Shader::addAttribute(std::string attrib)
     return true;
 }
 
-bool Shader::addUniform(std::string uniform)
+bool Shader::addUniform(const std::string &uniform)
 {
     const char* uni = uniform.c_str();
     int loc = glGetUniformLocation(this->shaderId, uni);
@@ -116,7 +116,7 @@ bool Shader::loadComponent(GLenum type, ShaderDesc &desc)
     return true;
 }
 
-bool Shader::loadComponentContents(std::string filename, std::string &contents)
+bool Shader::loadComponentContents(const std::string &filename, std::string &contents)
 {
     std::ifstream ifs(filename);
 
@@ -136,7 +136,7 @@ bool Shader::loadComponentContents(std::string filename, std::string &contents)
     return true;
 }
 
-bool Shader::compileComponent(int &id, GLenum type, std::string contents)
+bool Shader::compileComponent(int &id, GLenum type, const std::string &contents)
 {
     int status;
     const char *src = contents.c_str();
@@ -242,7 +242,7 @@ void Shader::getShaderError(int componentId)
 
 }
 
-bool Shader::getUniformLoc(std::string name, GLint &loc)
+bool Shader::getUniformLoc(const std::string &name, GLint &loc)
 {
     loc = glGetUniformLocation(this->shaderId, name.c_str());
     
@@ -252,22 +252,22 @@ bool Shader::getUniformLoc(std::string name, GLint &loc)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, glm::mat4 val)
+bool Shader::setShaderUniform(const std::string &name, const glm::mat4 &val)
 {
     return this->setShaderUniform(name, 4, 4, 1, false, glm::value_ptr(val));
 }
 
-bool Shader::setShaderUniform(std::string name, glm::vec3 val)
+bool Shader::setShaderUniform(const std::string &name, const glm::vec3 &val)
 {
     return this->setShaderUniform(name, val.r, val.b, val.g);
 }
 
-bool Shader::setShaderUniform(std::string name, glm::vec4 val)
+bool Shader::setShaderUniform(const std::string &name, const glm::vec4 &val)
 {
     return this->setShaderUniform(name, val.r, val.g, val.b, val.a);
 }
 
-bool Shader::setShadderCameraUniforms(glm::mat4 world, glm::mat4 view, glm::mat4 projection)
+bool Shader::setShadderCameraUniforms(const glm::mat4 &world, const glm::mat4 &view, const glm::mat4 &projection)
 {
     bool res;
     res = this->setShaderUniform(SHADER_UNIFORM_WORLD, world) &&
@@ -277,7 +277,7 @@ bool Shader::setShadderCameraUniforms(glm::mat4 world, glm::mat4 view, glm::mat4
     return res;
 }
 
-bool Shader::setShaderUniform(std::string name, GLfloat v0)
+bool Shader::setShaderUniform(const std::string &name, GLfloat v0)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -288,7 +288,7 @@ bool Shader::setShaderUniform(std::string name, GLfloat v0)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLfloat v0, GLfloat v1)
+bool Shader::setShaderUniform(const std::string &name, GLfloat v0, GLfloat v1)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -299,7 +299,7 @@ bool Shader::setShaderUniform(std::string name, GLfloat v0, GLfloat v1)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLfloat v0, GLfloat v1, GLfloat v2)
+bool Shader::setShaderUniform(const std::string &name, GLfloat v0, GLfloat v1, GLfloat v2)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -310,7 +310,7 @@ bool Shader::setShaderUniform(std::string name, GLfloat v0, GLfloat v1, GLfloat 
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+bool Shader::setShaderUniform(const std::string &name, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -321,7 +321,7 @@ bool Shader::setShaderUniform(std::string name, GLfloat v0, GLfloat v1, GLfloat 
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLint v0)
+bool Shader::setShaderUniform(const std::string &name, GLint v0)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -332,7 +332,7 @@ bool Shader::setShaderUniform(std::string name, GLint v0)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLint v0, GLint v1)
+bool Shader::setShaderUniform(const std::string &name, GLint v0, GLint v1)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -343,7 +343,7 @@ bool Shader::setShaderUniform(std::string name, GLint v0, GLint v1)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLint v0, GLint v1, GLint v2)
+bool Shader::setShaderUniform(const std::string &name, GLint v0, GLint v1, GLint v2)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -354,7 +354,7 @@ bool Shader::setShaderUniform(std::string name, GLint v0, GLint v1, GLint v2)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLint v0, GLint v1, GLint v2, GLint v3)
+bool Shader::setShaderUniform(const std::string &name, GLint v0, GLint v1, GLint v2, GLint v3)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -365,7 +365,7 @@ bool Shader::setShaderUniform(std::string name, GLint v0, GLint v1, GLint v2, GL
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLuint v0)
+bool Shader::setShaderUniform(const std::string &name, GLuint v0)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -376,7 +376,7 @@ bool Shader::setShaderUniform(std::string name, GLuint v0)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLuint v0, GLuint v1)
+bool Shader::setShaderUniform(const std::string &name, GLuint v0, GLuint v1)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -387,7 +387,7 @@ bool Shader::setShaderUniform(std::string name, GLuint v0, GLuint v1)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLuint v0, GLuint v1, GLuint v2)
+bool Shader::setShaderUniform(const std::string &name, GLuint v0, GLuint v1, GLuint v2)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -398,7 +398,7 @@ bool Shader::setShaderUniform(std::string name, GLuint v0, GLuint v1, GLuint v2)
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
+bool Shader::setShaderUniform(const std::string &name, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -409,7 +409,7 @@ bool Shader::setShaderUniform(std::string name, GLuint v0, GLuint v1, GLuint v2,
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, const GLfloat *value)
+bool Shader::setShaderUniform(const std::string &name, GLsizei uniSize, GLsizei len, const GLfloat *value)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -427,7 +427,7 @@ bool Shader::setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, co
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, const GLint *value)
+bool Shader::setShaderUniform(const std::string &name, GLsizei uniSize, GLsizei len, const GLint *value)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -445,7 +445,7 @@ bool Shader::setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, co
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, const GLuint *value)
+bool Shader::setShaderUniform(const std::string &name, GLsizei uniSize, GLsizei len, const GLuint *value)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))
@@ -463,7 +463,7 @@ bool Shader::setShaderUniform(std::string name, GLsizei uniSize, GLsizei len, co
     return true;
 }
 
-bool Shader::setShaderUniform(std::string name, GLsizei row, GLsizei column, GLsizei count, GLboolean transpose, const GLfloat *value)
+bool Shader::setShaderUniform(const std::string &name, GLsizei row, GLsizei column, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
     GLint loc;
     if(!this->getUniformLoc(name, loc))

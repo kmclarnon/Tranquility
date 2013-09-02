@@ -207,7 +207,7 @@ bool Mesh::initMaterials(const aiScene* pScene, const std::string& Filename)
     return res;
 }
 
-void Mesh::render()
+void Mesh::render() const
 {
     for (unsigned int i = 0; i < entries.size(); i++) 
     {

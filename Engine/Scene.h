@@ -15,9 +15,9 @@ public:
     bool update();
 
 
-    Light& getLight();
-    Camera& getCamera();
-    Model& getModel();
+    const Light& getLight() const;
+    const Camera& getCamera() const;
+    const Model& getModel() const;
 
 private:
     Model model;
