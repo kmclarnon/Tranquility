@@ -1,6 +1,6 @@
 #include "RenderDevice.h"
 
-RenderDevice::RenderDevice(const LogSystem &log) : logSys(log)
+RenderDevice::RenderDevice(const LogSystem &log, SceneManager &sceneManager) : logSys(log), sceneManager(sceneManager)
 {
 
 }
@@ -41,7 +41,7 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
         return false;
     }
 
-    this->scene.init(width, height);
+    //this->scene.init(width, height);
 
     return true;
 }
@@ -56,28 +56,28 @@ bool RenderDevice::update()
     // Render code goes here
     this->shader->useShader();
 
-    // update our scene (temp)
-    this->scene.update();
+    // get our renderable scene
+    Scene &s = sceneManager.getActiveScene();
 
     // set our camera matricies
-    if(!this->shader->setShadderCameraUniforms(this->scene.getModel().getModelMatrix(), this->scene.getCamera().getViewMatrix(), this->scene.getCamera().getProjectionMatrix()))
+    if(!this->shader->setShadderCameraUniforms(s.getModel().getModelMatrix(), s.getCamera().getViewMatrix(), s.getCamera().getProjectionMatrix()))
         return false;
 
     // set our light data
-    if(!this->shader->setShaderUniform(SHADER_UNIFORM_LIGHT_DIR, this->scene.getLight().getLightDirection()))
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_LIGHT_DIR, s.getLight().getLightDirection()))
         return false;
 
-    if(!this->shader->setShaderUniform(SHADER_UNIFORM_DIFFUSE_COLOR, this->scene.getLight().getDiffuseColor()))
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_DIFFUSE_COLOR, s.getLight().getDiffuseColor()))
         return false;
 
-    if(!this->shader->setShaderUniform(SHADER_UNIFORM_AMBIENT, this->scene.getLight().getAmbientLight()))
+    if(!this->shader->setShaderUniform(SHADER_UNIFORM_AMBIENT, s.getLight().getAmbientLight()))
         return false;
 
     // set texture unit
     if(!this->shader->setShaderUniform(SHADER_UNIFORM_TEXTURE, 0))
         return false;
 
-    this->scene.getModel().render();
+    s.getModel().render();
 
     // present the rendered screen
     this->device->endScene();

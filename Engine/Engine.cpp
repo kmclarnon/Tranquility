@@ -74,9 +74,6 @@ void Engine::run()
         // start measuring our current frame
         this->timer->resetElapsed();
 
-        // inform our scene manager of our frame time
-        this->sceneManager->setFrameTime(frameTime);
-
         // poll subsystem for events
         if(SDL_PollEvent(&event)) 
         {
@@ -87,11 +84,11 @@ void Engine::run()
                     break;
                 case SDL_EventType::SDL_KEYDOWN:
                 case SDL_EventType::SDL_KEYUP:
-                    this->sceneManager->handleKeyboardEvent(event.key);
+                    //this->sceneManager->handleKeyboardEvent(event.key);
                     break;
                 case SDL_EventType::SDL_MOUSEBUTTONDOWN:
                 case SDL_EventType::SDL_MOUSEBUTTONUP:
-                    this->sceneManager->handleMouseEvent(event.button);
+                    //this->sceneManager->handleMouseEvent(event.button);
                     break;
                 default:
                     break;
