@@ -6,6 +6,8 @@
 #include "RenderDevice.h"
 #include "Shader.h"
 #include "LogSystem.h"
+#include "SceneManager.h"
+#include "Timer.h"
 
 class Engine
 {
@@ -31,6 +33,8 @@ private:
     // Services
     std::unique_ptr<LogSystem> logSys;
     std::unique_ptr<ConfigParser> configParser;
+    std::unique_ptr<SceneManager> sceneManager;
+    std::unique_ptr<Timer> timer;
 };
 
 #endif

@@ -58,12 +58,25 @@ void Engine::run()
 {
     bool running = true;
     SDL_Event event;
+    double frameTime;
 
     this->logSys->debug("Entering main engine loop");
+
+    // start up our timer
+    this->timer->start();
 
     // main game loop
     while(running) 
     {
+        // get our frame time
+        frameTime = this->timer->getElapsedTimeInMilliSec();
+        this->logSys->debug("Elapsed time: %lf", frameTime);
+        // start measuring our current frame
+        this->timer->resetElapsed();
+
+        // inform our scene manager of our frame time
+        this->sceneManager->setFrameTime(frameTime);
+
         // poll subsystem for events
         if(SDL_PollEvent(&event)) 
         {
@@ -72,10 +85,21 @@ void Engine::run()
                 case SDL_QUIT:
                     running = false;
                     break;
+                case SDL_EventType::SDL_KEYDOWN:
+                case SDL_EventType::SDL_KEYUP:
+                    this->sceneManager->handleKeyboardEvent(event.key);
+                    break;
+                case SDL_EventType::SDL_MOUSEBUTTONDOWN:
+                case SDL_EventType::SDL_MOUSEBUTTONUP:
+                    this->sceneManager->handleMouseEvent(event.button);
+                    break;
                 default:
                     break;
             }
         }
+
+        // tell our scenes to update
+        this->sceneManager->update();
 
         // draw next frame
         this->renderer->update();
@@ -149,11 +173,21 @@ bool Engine::initGraphics()
     if(this->configParser->hasSetting(CONFIG_VSYNC))
         vsync = atoi(this->configParser->getSetting(CONFIG_VSYNC).c_str()) > 0;
 
+    // create our scene manager
+    this->sceneManager = std::unique_ptr<SceneManager>(new SceneManager(*this->logSys, this->width, this->height));
+
     // initialize our renderer
-    this->renderer = std::unique_ptr<RenderDevice>(new RenderDevice(*this->logSys));
+    this->renderer = std::unique_ptr<RenderDevice>(new RenderDevice(*this->logSys, *this->sceneManager));
     if(!this->renderer->init(vsync, this->width, this->height, this->window))
     {
         this->logSys->error("Failed to initialize renderer\n");
+        return false;
+    }
+
+    // initialize our scene manager (test scene)
+    if(!this->sceneManager->init())
+    {
+        this->logSys->error("Failed to initialize scene manager");
         return false;
     }
 
@@ -172,6 +206,9 @@ bool Engine::initServices()
 
     // create our configuration file parser
     this->configParser = std::unique_ptr<ConfigParser>(new ConfigParser(*this->logSys));
+
+    // create our timer
+    this->timer = std::unique_ptr<Timer>(new Timer());
 
     return true;
 }
