@@ -84,9 +84,6 @@ void Engine::run()
 
 void Engine::shutdown()
 {
-    // shutdown the renderer
-    this->renderer->shutdown();
-
     // delete our window
     SDL_DestroyWindow(this->window);
 
@@ -97,7 +94,6 @@ void Engine::shutdown()
 
 bool Engine::initWindow()
 {
-
     // get our height and width from the config file
     if(this->configParser->hasSetting(CONFIG_RESOLUTION_WIDTH) &&
         this->configParser->hasSetting(CONFIG_RESOLUTION_HEIGHT))

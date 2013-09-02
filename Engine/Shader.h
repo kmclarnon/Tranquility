@@ -19,7 +19,7 @@ private:
     typedef std::vector<std::string> TempAttributeList;
 
 public:
-    Shader(LogSystem &logSys);
+    Shader(const LogSystem &logSys);
 
     bool init();
     void shutdown();
@@ -68,12 +68,15 @@ private:
     
 private:
     int shaderId;
-    LogSystem &logSys;
+
     ComponentMap stages;
     AttributeMap attributes;
     AttributeMap uniforms;
     TempAttributeList tempAttrs;
     TempAttributeList tempUniforms;
+
+    // we do not own this
+    const LogSystem &logSys;
 };
 
 #endif

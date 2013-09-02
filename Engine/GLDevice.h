@@ -8,7 +8,7 @@
 class GLDevice
 {
 public:
-    GLDevice(LogSystem &logSys, SDL_Window *window);
+    GLDevice(const LogSystem &logSys, SDL_Window *window);
     bool init(bool vsync);
     void shutdown();
 

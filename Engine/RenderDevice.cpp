@@ -1,15 +1,14 @@
 #include "RenderDevice.h"
 
-RenderDevice::RenderDevice(LogSystem &log) : logSys(log)
+RenderDevice::RenderDevice(const LogSystem &log) : logSys(log)
 {
-    this->device = nullptr;
-    this->shader = nullptr;
+
 }
 
 bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
 {
     // initialize our graphics device
-    this->device = new GLDevice(this->logSys, window);
+    this->device = std::unique_ptr<GLDevice>(new GLDevice(this->logSys, window));
     if(!this->device->init(vsync))
     {
         printf("Failed to initialize graphics device\n");
@@ -17,7 +16,7 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
     }
 
     // initialize our shader
-    this->shader = new Shader(this->logSys);
+    this->shader = std::unique_ptr<Shader>(new Shader(this->logSys));
     this->shader->addStage(GL_VERTEX_SHADER, "shader.vert");
     this->shader->addStage(GL_FRAGMENT_SHADER, "shader.frag");
     // vertex attributes
@@ -41,21 +40,6 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
         printf("Failed to initialize shader\n");
         return false;
     }
-
-    /*
-    // initialize our camera
-    this->camera = new Camera(45.0f, width, height, 0.1f, 1000.0f);
-    this->camera->setPosition(0.0f, 0.0f, -10.0f);
-
-    // set up our light
-    this->light = Light();
-    this->light.setDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
-    this->light.setLightDirection(1.0f, 0.0f, 0.0f);
-    this->light.setAmbientLight(0.15f, 0.15f, 0.15f, 1.0f);
-
-    // load our model
-    this->mesh.LoadMesh("Models/cube.obj");
-    */
 
     this->scene.init(width, height);
 
@@ -99,22 +83,5 @@ bool RenderDevice::update()
     this->device->endScene();
 
     return true;
-}
-
-void RenderDevice::shutdown()
-{
-    // destroy our graphics device
-    if(this->device)
-    {
-        this->device->shutdown();
-        delete this->device;
-    }
-
-    // destroy our shader manager
-    if(this->shader)
-    {
-        this->shader->shutdown();
-        delete this->shader;
-    }
 }
 

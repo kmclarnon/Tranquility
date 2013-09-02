@@ -1,6 +1,6 @@
 #include "gldevice.h"
 
-GLDevice::GLDevice(LogSystem &logSys, SDL_Window *window) : logSys(logSys)
+GLDevice::GLDevice(const LogSystem &logSys, SDL_Window *window) : logSys(logSys)
 {
     this->context = nullptr;
     this->window = window;

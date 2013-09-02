@@ -11,13 +11,10 @@
 class RenderDevice
 {
 public:
-    RenderDevice(LogSystem &logSys);
+    RenderDevice(const LogSystem &logSys);
 
     bool init(bool vsync, int width, int height, SDL_Window *window);
     bool update();
-
-    void shutdown();
-
 
 private:
     // test
@@ -27,10 +24,10 @@ private:
     Scene scene;
 
     // We do not own this
-    LogSystem &logSys;
+    const LogSystem &logSys;
 
-    GLDevice *device;
-    Shader *shader;
+    std::unique_ptr<GLDevice> device;
+    std::unique_ptr<Shader> shader;
     
 };
 

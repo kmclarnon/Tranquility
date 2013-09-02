@@ -1,6 +1,6 @@
 #include "Shader.h"
 
-Shader::Shader(LogSystem &log) : logSys(log)
+Shader::Shader(const LogSystem &log) : logSys(log)
 {
     this->shaderId = -1;
     this->stages = ComponentMap();
