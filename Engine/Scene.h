@@ -14,7 +14,6 @@ public:
     bool init(int width, int height);
     bool update();
 
-
     const Light& getLight() const;
     const Camera& getCamera() const;
     const Model& getModel() const;

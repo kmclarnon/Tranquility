@@ -17,7 +17,7 @@ bool Scene::init(int width, int height)
     this->light.setAmbientLight(0.15f, 0.15f, 0.15f, 1.0f);
 
     // load our model
-    bool res = this->model.loadFromFile("Models/cube.obj");
+    bool res = this->model.loadFromFile("Models/Ships/concept ships.3ds");
 
     this->model.setScale(0.5);
 
@@ -48,20 +48,22 @@ bool Scene::update()
     this->model.setOrientation(glm::quat(glm::vec3(rotation, rotation, 0.0f)));
     this->model.setScale(scale);
 
+    this->model.update();
+
     return true;
 }
 
-Light& Scene::getLight()
+const Light& Scene::getLight() const
 {
     return this->light;
 }
 
-Camera& Scene::getCamera()
+const Camera& Scene::getCamera() const
 {
     return this->camera;
 }
 
-Model& Scene::getModel()
+const Model& Scene::getModel() const
 {
     return this->model;
 }
