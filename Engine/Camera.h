@@ -14,8 +14,8 @@ public:
     void move(float right, float up, float forward);
     void rotate(float x, float y, float z);
 
-    glm::mat4 getViewMatrix();
-    glm::mat4 getProjectionMatrix();
+    glm::mat4 getViewMatrix() const;
+    glm::mat4 getProjectionMatrix() const;
 
 private:
     void move(glm::vec3 trans);

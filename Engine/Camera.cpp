@@ -24,12 +24,12 @@ void Camera::update()
         Camera::UP_VECTOR * this->orientation);
 }
 
-glm::mat4 Camera::getViewMatrix()
+glm::mat4 Camera::getViewMatrix() const
 {
     return this->viewMat;
 }
 
-glm::mat4 Camera::getProjectionMatrix()
+glm::mat4 Camera::getProjectionMatrix() const
 {
     return this->projectionMatrix;
 }
