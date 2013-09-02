@@ -12,9 +12,9 @@ public:
     void setDiffuseColor(float r, float g, float b, float a);
     void setAmbientLight(float r, float g, float b, float a);
 
-    glm::vec3 getLightDirection();
-    glm::vec4 getDiffuseColor();
-    glm::vec4 getAmbientLight();
+    glm::vec3 getLightDirection() const;
+    glm::vec4 getDiffuseColor() const;
+    glm::vec4 getAmbientLight() const;
 
 private:
     glm::vec3 lightDirection;

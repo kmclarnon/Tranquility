@@ -22,17 +22,17 @@ void Light::setAmbientLight(float r, float g, float b, float a)
     this->ambientLight = glm::vec4(r, g, b, a);
 }
 
-glm::vec3 Light::getLightDirection()
+glm::vec3 Light::getLightDirection() const
 {
     return this->lightDirection;
 }
 
-glm::vec4 Light::getDiffuseColor()
+glm::vec4 Light::getDiffuseColor() const
 {
     return this->diffuseColor;
 }
 
-glm::vec4 Light::getAmbientLight()
+glm::vec4 Light::getAmbientLight() const
 {
     return this->ambientLight;
 }
