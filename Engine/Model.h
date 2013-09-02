@@ -9,18 +9,18 @@ class Model
 public:
     Model();
 
-    bool loadFromFile(std::string fileName);
+    bool loadFromFile(const std::string &fileName);
 
     void setPosition(float x, float y, float z);
-    void setPosition(glm::vec3 pos);
+    void setPosition(const glm::vec3 &pos);
     glm::vec3 getPosition() const;
 
     void setOrientation(float w, float x, float y, float z);
-    void setOrientation(glm::quat ori);
+    void setOrientation(const glm::quat &ori);
     glm::quat getOrientation() const;
 
     void setScale(float xScale, float yScale, float zScale);
-    void setScale(glm::vec3 scale);
+    void setScale(const glm::vec3 &scale);
     void setScale(float scale);
 
     glm::mat4 getModelMatrix();

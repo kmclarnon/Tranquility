@@ -5,7 +5,7 @@ Model::Model() : outdated(false)
 
 }
 
-bool Model::loadFromFile(std::string fileName)
+bool Model::loadFromFile(const std::string &fileName)
 {
     return this->mesh.loadMesh(fileName);
 }
@@ -16,7 +16,7 @@ void Model::setPosition(float x, float y, float z)
     this->outdated = true;
 }
 
-void Model::setPosition(glm::vec3 pos)
+void Model::setPosition(const glm::vec3 &pos)
 {
     this->position = pos;
     this->outdated = true;
@@ -31,7 +31,7 @@ void Model::setOrientation(float w, float x, float y, float z)
     this->orientation = glm::quat(w, x, y, z);
     this->outdated = true;
 }
-void Model::setOrientation(glm::quat ori)
+void Model::setOrientation(const glm::quat &ori)
 {
     this->orientation = ori;
     this->outdated = true;
@@ -47,7 +47,7 @@ void Model::setScale(float xScale, float yScale, float zScale)
     this->outdated = true;
 }
 
-void Model::setScale(glm::vec3 scale)
+void Model::setScale(const glm::vec3 &scale)
 {
     this->scale = scale;
     this->outdated = true;
