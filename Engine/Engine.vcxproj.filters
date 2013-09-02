@@ -28,16 +28,40 @@
     <Filter Include="Include\Utils">
       <UniqueIdentifier>{864f6cbf-d0ac-4c2b-a03d-682f51e16117}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Include\Graphics\Camera">
+      <UniqueIdentifier>{ee754356-6076-4102-831e-842c2eb36df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Graphics\Renderer">
+      <UniqueIdentifier>{c514b1b0-1920-40c8-9bb7-83dcdb259e04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Graphics\Scene">
+      <UniqueIdentifier>{55390814-6fe7-4232-80a4-5802fc044d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Graphics\Renderer\Shader">
+      <UniqueIdentifier>{2e3e266a-5b4a-4411-a09f-4ecc5d4b70db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Graphics\Model">
+      <UniqueIdentifier>{47831f42-83f0-4903-aad0-a62b9e496e0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Camera">
+      <UniqueIdentifier>{7361c9db-4350-4d5b-aca1-519b9a3286c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Model">
+      <UniqueIdentifier>{870da2ef-32b6-4527-abce-1f5f80c5d62e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Scene">
+      <UniqueIdentifier>{d78c3220-4e2a-425c-af4a-003195561367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Renderer">
+      <UniqueIdentifier>{920c273c-6457-4a52-b9cf-c0be77e96a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics\Renderer\Shader">
+      <UniqueIdentifier>{6a84521a-79e5-4f62-aef4-81089c0ebb92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderDevice.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GLDevice.cpp">
-      <Filter>Source\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="ConfigParser.cpp">
       <Filter>Source\Services</Filter>
@@ -48,46 +72,49 @@
     <ClCompile Include="StringUtils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Source\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Source\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Graphics\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source\Graphics\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GLDevice.cpp">
+      <Filter>Source\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderDevice.cpp">
+      <Filter>Source\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source\Graphics\Renderer\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSCamera.cpp">
+      <Filter>Source\Graphics\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
       <Filter>Include</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderDevice.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="GLDevice.h">
-      <Filter>Include\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="LogSystem.h">
       <Filter>Include\Services</Filter>
@@ -101,38 +128,47 @@
     <ClInclude Include="StringUtils.h">
       <Filter>Include\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Include\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderDict.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Include\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Include\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSCamera.h">
+      <Filter>Include\Graphics\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Include\Graphics\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderDevice.h">
+      <Filter>Include\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GLDevice.h">
+      <Filter>Include\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Include\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Include\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Include\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Include\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Include\Graphics\Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderDict.h">
+      <Filter>Include\Graphics\Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Include\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Include\Graphics\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
