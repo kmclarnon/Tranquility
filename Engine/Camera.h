@@ -8,7 +8,7 @@ class Camera
 public:
     Camera();
 
-    void update();
+    virtual void update();
     void setView(float fov, int width, int height, float zNear, float zFar);
     void setPosition(float x, float y, float z);
     void move(float right, float up, float forward);
@@ -17,11 +17,11 @@ public:
     glm::mat4 getViewMatrix() const;
     glm::mat4 getProjectionMatrix() const;
 
-private:
+protected:
     void move(glm::vec3 trans);
     void rotate(glm::vec3 rot);
 
-private:
+protected:
     glm::mat4 viewMat;
     glm::mat4 projectionMatrix;
     glm::vec3 position;
