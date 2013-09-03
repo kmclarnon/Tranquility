@@ -19,7 +19,7 @@ File Structure
 -------------------
 The file structure of the engine is as follows  (subject to change)
  
- * Config - directory for configuration files (other can be elsewhere, but must be specified in the config.xml file)
- * Engine - main source directory
- * Models - default directory for the test models (configurable in config.xml)
- * Shaders - default directory for GLSL shaders (configurable in config.xml)
+ * **Config** - directory for configuration files (other can be elsewhere, but must be specified in the config.xml file)
+ * **Engine** - main source directory
+ * **Models** - default directory for the test models (configurable in config.xml)
+ * **Shaders** - default directory for GLSL shaders (configurable in config.xml)
