@@ -12,7 +12,7 @@
 class RenderDevice
 {
 public:
-    RenderDevice(const LogSystem &logSys, SceneManager &sceneManager);
+    RenderDevice(const LogSystem &logSys, SceneManager &sceneManager, std::string shaderDir);
 
     bool init(bool vsync, int width, int height, SDL_Window *window);
     bool update();
@@ -21,6 +21,7 @@ private:
     SceneManager &sceneManager;
     std::unique_ptr<GLDevice> device;
     std::unique_ptr<Shader> shader;
+    std::string shaderDir;
 
     // We do not own this
     const LogSystem &logSys;

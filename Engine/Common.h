@@ -50,7 +50,8 @@
 #include <unordered_map>
 #include <vector>
 
-
+// typedefs
+typedef unsigned int uint;
 
 
 #endif

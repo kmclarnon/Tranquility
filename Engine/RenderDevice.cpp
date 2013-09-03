@@ -1,6 +1,6 @@
 #include "RenderDevice.h"
 
-RenderDevice::RenderDevice(const LogSystem &log, SceneManager &sceneManager) : logSys(log), sceneManager(sceneManager)
+RenderDevice::RenderDevice(const LogSystem &log, SceneManager &sceneManager, std::string shaderDir) : logSys(log), sceneManager(sceneManager), shaderDir(shaderDir)
 {
 
 }
@@ -17,8 +17,8 @@ bool RenderDevice::init(bool vsync, int width, int height, SDL_Window *window)
 
     // initialize our shader
     this->shader = std::unique_ptr<Shader>(new Shader(this->logSys));
-    this->shader->addStage(GL_VERTEX_SHADER, "shader.vert");
-    this->shader->addStage(GL_FRAGMENT_SHADER, "shader.frag");
+    this->shader->addStage(GL_VERTEX_SHADER, this->shaderDir + "shader.vert");
+    this->shader->addStage(GL_FRAGMENT_SHADER, this->shaderDir + "shader.frag");
     // vertex attributes
     this->shader->addAttribute(SHADER_IN_POSITION);
     this->shader->addAttribute(SHADER_IN_TEXCOORD);

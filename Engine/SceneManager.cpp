@@ -1,13 +1,13 @@
 #include "SceneManager.h"
 
-SceneManager::SceneManager(LogSystem &log, int width, int height) : logSys(log), width(width), height(height)
+SceneManager::SceneManager(LogSystem &log, int width, int height, const std::string &modelDir) : logSys(log), width(width), height(height), modelDir(modelDir)
 {
 
 }
 
 bool SceneManager::init()
 {
-    return this->scene.init(this->width, this->height);
+    return this->scene.init(this->width, this->height, this->modelDir + "cube.obj");
 }
 
 bool SceneManager::update()

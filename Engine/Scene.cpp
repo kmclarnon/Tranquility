@@ -5,7 +5,7 @@ Scene::Scene()
 
 }
 
-bool Scene::init(int width, int height)
+bool Scene::init(int width, int height, std::string &model)
 {
     // set up our camera
     this->camera.setView(45.0f, width, height, 0.1f, 1000.0f);
@@ -17,11 +17,12 @@ bool Scene::init(int width, int height)
     this->light.setAmbientLight(0.15f, 0.15f, 0.15f, 1.0f);
 
     // load our model
-    bool res = this->model.loadFromFile("Models/cube.obj");
+    if(!this->model.loadFromFile(model))
+        return false;
 
     this->model.setScale(1.0f);
 
-    return res;
+    return true;
 }
 
 bool Scene::update()

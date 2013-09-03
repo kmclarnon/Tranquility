@@ -20,7 +20,7 @@ public:
 
 private:
     bool initGraphics();
-    bool initSubsystem();
+    bool initGraphicsSubsystem();
     bool initWindow();
     bool initServices();
 

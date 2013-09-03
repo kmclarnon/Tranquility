@@ -11,7 +11,7 @@ class Scene
 public:
     Scene();
 
-    bool init(int width, int height);
+    bool init(int width, int height, std::string &model);
     bool update();
 
     const Light& getLight() const;

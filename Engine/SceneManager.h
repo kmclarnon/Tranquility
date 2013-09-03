@@ -8,7 +8,7 @@
 class SceneManager
 {
 public:
-    SceneManager(LogSystem &log, int width, int height);
+    SceneManager(LogSystem &log, int width, int height, const std::string &modelDir);
 
     bool init();
     bool update();
@@ -18,6 +18,7 @@ public:
 private:
     Scene scene;
     int width, height;
+    const std::string &modelDir;
 
     // we do not own this
     const LogSystem &logSys;
