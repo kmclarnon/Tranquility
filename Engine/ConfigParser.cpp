@@ -36,19 +36,24 @@ bool ConfigParser::getVsync()
     return this->vsync;
 }
 
-std::string ConfigParser::getModelPath()
+std::string ConfigParser::getModelDir()
 {
-    return this->modelPath;
+    return this->modelDir;
 }
 
-std::string ConfigParser::getShaderPath()
+std::string ConfigParser::getShaderDir()
 {
-    return this->shaderPath;
+    return this->shaderDir;
 }
 
 std::string ConfigParser::getLogDir()
 {
     return this->logDir;
+}
+
+std::string ConfigParser::getResourceDir()
+{
+    return this->resourceDir;
 }
 
 
@@ -73,14 +78,16 @@ void ConfigParser::loadConfig(std::string configFile)
             catch (std::exception* e)
             {
                 printf("Failed to parse line %i of %s: %s\n", lineIndex,configFile.c_str(), e->what());
-                printf("Error detected in config parsing, attempting to fill in missing data from defaults\n");
                 loadFromDefaults = true;
             }
         }
     }
 
     if(loadFromDefaults)
+    {
+        printf("Error detected in config parsing, filling in missing data from defaults\n");
         this->loadDefaults();
+    }
 }
 
 bool ConfigParser::parseLine(std::string &line)
@@ -100,9 +107,9 @@ bool ConfigParser::parseLine(std::string &line)
             this->currentGroup = Graphics;
             return true;
         }
-        else if(l == CONFIG_GROUP_ASSETS)
+        else if(l == CONFIG_GROUP_RESOURCES)
         {
-            this->currentGroup = Assets;
+            this->currentGroup = Resources;
             return true;
         }
         else if(l == CONFIG_GROUP_LOGGING)
@@ -118,7 +125,7 @@ bool ConfigParser::parseLine(std::string &line)
     {
     case Window:    return this->parseWindowLine(l);        break;
     case Graphics:  return this->parseGraphicsLine(l);      break;
-    case Assets:    return this->parseAssetLine(l);         break;
+    case Resources: return this->parseResourceLine(l);         break;
     case Logging:   return this->parseLoggingLine(l);       break;
     default:
         return false;
@@ -171,20 +178,25 @@ bool ConfigParser::parseGraphicsLine(std::string &line)
     return false;
 }
 
-bool ConfigParser::parseAssetLine(std::string &line)
+bool ConfigParser::parseResourceLine(std::string &line)
 {
     std::vector<std::string> elems = split(line, '=');
     if(elems.size() != 2)
         return false;
 
-    if(elems.at(0) == ASSET_OPTION_MODEL_PATH)
+    if(elems.at(0) == RESOURCE_OPTION_MODEL_PATH)
     {
-        this->modelPath = elems.at(1);
+        this->modelDir = elems.at(1);
         return true;
     }
-    else if(elems.at(0) == ASSET_OPTION_SHADER_PATH)
+    else if(elems.at(0) == RESOURCE_OPTION_SHADER_PATH)
     {
-        this->shaderPath = elems.at(1);
+        this->shaderDir = elems.at(1);
+        return true;
+    }
+    else if(elems.at(0) == RESOURCE_PATH)
+    {
+        this->resourceDir = elems.at(1);
         return true;
     }
 
@@ -239,14 +251,18 @@ void ConfigParser::loadDefaults()
     }
 
     // check model path
-    if(this->modelPath.size() == 0)
-        this->modelPath = DEFAULT_MODEL_DIR;
+    if(this->modelDir.size() == 0)
+        this->modelDir = DEFAULT_MODEL_DIR;
 
     // check shader path
-    if(this->shaderPath.size() == 0)
-        this->shaderPath = DEFAULT_SHADER_DIR;
+    if(this->shaderDir.size() == 0)
+        this->shaderDir = DEFAULT_SHADER_DIR;
 
     // check log path
     if(this->logDir.size() == 0)
         this->logDir = DEFAULT_LOG_DIR;
+
+    // check resource path
+    if(this->resourceDir.size() == 0)
+        this->resourceDir = DEFAULT_RESOURCE_DIR;
 }

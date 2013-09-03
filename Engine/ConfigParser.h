@@ -19,15 +19,16 @@ public:
     int getGLMinorVer();
     std::string getWindowName();
     bool getVsync();
-    std::string getModelPath();
-    std::string getShaderPath();
+    std::string getModelDir();
+    std::string getShaderDir();
     std::string getLogDir();
+    std::string getResourceDir();
 
 private:
     bool parseLine(std::string &line);
     bool parseWindowLine(std::string &line);
     bool parseGraphicsLine(std::string &line);
-    bool parseAssetLine(std::string &line);
+    bool parseResourceLine(std::string &line);
     bool parseLoggingLine(std::string &line);
 
     // Helpers
@@ -39,7 +40,7 @@ private:
 
     // config options
     int windowHeight, windowWidth, openGLMajor, openGLMinor;
-    std::string windowName, shaderPath, modelPath, logDir;
+    std::string windowName, shaderDir, modelDir, resourceDir, logDir;
     bool vsync;
 };
 

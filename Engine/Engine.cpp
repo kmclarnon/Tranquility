@@ -142,8 +142,8 @@ bool Engine::initGraphics()
 {
     // get any configuration settings we are interested in
     bool vsync = this->configParser->getVsync();
-    std::string shaderDir = this->configParser->getShaderPath();
-    std::string modelDir = this->configParser->getModelPath();
+    std::string shaderDir = this->configParser->getShaderDir();
+    std::string modelDir = this->configParser->getModelDir();
     int width = this->configParser->getWindowWidth();
     int height = this->configParser->getWindowHeight();
 
