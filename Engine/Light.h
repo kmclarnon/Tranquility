@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_LIGHT_H_
-#define _TRILLEK_LIGHT_H_
+#ifndef _TRANQUILITYLIGHT_H_
+#define _TRANQUILITYLIGHT_H_
 
 #include "Common.h"
 

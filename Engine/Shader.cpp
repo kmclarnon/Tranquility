@@ -126,8 +126,11 @@ bool Shader::loadComponentContents(const std::string &filename, std::string &con
         return false;
     }
 
+    if((unsigned int)ifs.tellg() > UINT_MAX)
+        assert(false);
+
     ifs.seekg(0, std::ios::end);   
-    contents.reserve(ifs.tellg());
+    contents.reserve(static_cast<unsigned int>(ifs.tellg()));
     ifs.seekg(0, std::ios::beg);
 
     contents.assign((std::istreambuf_iterator<char>(ifs)),

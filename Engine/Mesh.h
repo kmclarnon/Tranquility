@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_MESH_H_
-#define _TRILLEK_MESH_H_
+#ifndef _TRANQUILITYMESH_H_
+#define _TRANQUILITYMESH_H_
 
 #include "Common.h"
 #include <assimp/Importer.hpp>

@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_RENDER_DEVICE_H_
-#define _TRILLEK_RENDER_DEVICE_H_
+#ifndef _TRANQUILITYRENDER_DEVICE_H_
+#define _TRANQUILITYRENDER_DEVICE_H_
 
 #include "Common.h"
 #include "GLDevice.h"

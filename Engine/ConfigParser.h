@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_CONFIG_PARSER_H_
-#define _TRILLEK_CONFIG_PARSER_H_
+#ifndef _TRANQUILITY_CONFIG_PARSER_H_
+#define _TRANQUILITY_CONFIG_PARSER_H_
 
 #include "Common.h"
 #include "ConfigOptions.h"

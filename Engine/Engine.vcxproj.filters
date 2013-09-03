@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="res">
-      <UniqueIdentifier>{bcf72b63-b200-4044-ae79-b8d02dcdb30c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{a8d9f9f0-6dea-4a0b-ad41-d2772742669a}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,9 @@
     </Filter>
     <Filter Include="Source\Services\Config">
       <UniqueIdentifier>{12b136a5-0967-473d-b297-0b9a428a91c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{bcf72b63-b200-4044-ae79-b8d02dcdb30c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -197,10 +197,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.frag">
-      <Filter>res</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="shader.vert">
-      <Filter>res</Filter>
+      <Filter>Resources</Filter>
     </None>
   </ItemGroup>
 </Project>

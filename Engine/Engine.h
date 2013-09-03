@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_ENGINE_H_
-#define _TRILLEK_ENGINE_H_
+#ifndef _TRANQUILITYENGINE_H_
+#define _TRANQUILITYENGINE_H_
 
 #include "Common.h"
 #include "ConfigParser.h"

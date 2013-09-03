@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_TEXTURE_H_
-#define _TRILLEK_TEXTURE_H_
+#ifndef _TRANQUILITYTEXTURE_H_
+#define _TRANQUILITYTEXTURE_H_
 
 #include "Common.h"
 

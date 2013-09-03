@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_FPS_CAMERA_H_
-#define _TRILLEK_FPS_CAMERA_H_
+#ifndef _TRANQUILITYFPS_CAMERA_H_
+#define _TRANQUILITYFPS_CAMERA_H_
 
 #include "Common.h"
 #include "Camera.h"

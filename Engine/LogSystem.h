@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_LOG_SYSTEM_H_
-#define _TRILLEK_LOG_SYSTEM_H_
+#ifndef _TRANQUILITYLOG_SYSTEM_H_
+#define _TRANQUILITYLOG_SYSTEM_H_
 
 #include "Common.h"
 

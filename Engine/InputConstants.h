@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_INPUT_CONSTANTS_H_
-#define _TRILLEK_INPUT_CONSTANTS_H_
+#ifndef _TRANQUILITYINPUT_CONSTANTS_H_
+#define _TRANQUILITYINPUT_CONSTANTS_H_
 
 typedef enum InputConstants
 {

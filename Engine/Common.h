@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_COMMON_H_
-#define _TRILLEK_COMMON_H_
+#ifndef _TRANQUILITYCOMMON_H_
+#define _TRANQUILITYCOMMON_H_
 
 //#define _HAS_ITERATOR_DEBUGGING  0
 //#define _SECURE_SCL 0
@@ -34,6 +34,7 @@
 #include <future>
 #include <iosfwd>
 #include <iostream>
+#include <limits>
 #include <locale>
 #include <map>
 #include <math.h>

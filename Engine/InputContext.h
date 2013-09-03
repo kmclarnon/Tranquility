@@ -1,8 +1,15 @@
-#ifndef _TRILLEK_INPUT_CONTEXT_H_
-#define _TRILLEK_INPUT_CONTEXT_H_
+#ifndef _TRANQUILITYINPUT_CONTEXT_H_
+#define _TRANQUILITYINPUT_CONTEXT_H_
+
+#include "Common.h"
 
 class InputContext
 {
+public:
+    InputContext(std::string fileName);
+
+
+private:
 
 };
 

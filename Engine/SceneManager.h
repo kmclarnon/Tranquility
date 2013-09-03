@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_SCENE_MANAGER_H_
-#define _TRILLEK_SCENE_MANAGER_H_
+#ifndef _TRANQUILITYSCENE_MANAGER_H_
+#define _TRANQUILITYSCENE_MANAGER_H_
 
 #include "Common.h"
 #include "LogSystem.h"

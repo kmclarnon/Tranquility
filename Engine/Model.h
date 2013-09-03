@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_MODEL_H_
-#define _TRILLEK_MODEL_H_
+#ifndef _TRANQUILITYMODEL_H_
+#define _TRANQUILITYMODEL_H_
 
 #include "Common.h"
 #include "Mesh.h"

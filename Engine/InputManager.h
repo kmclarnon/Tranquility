@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_INPUT_MANAGER_H_
-#define _TRILLEK_INPUT_MANAGER_H_
+#ifndef _TRANQUILITYINPUT_MANAGER_H_
+#define _TRANQUILITYINPUT_MANAGER_H_
 
 #include "Common.h"
 

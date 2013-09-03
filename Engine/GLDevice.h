@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_GLDEVICE_H_
-#define _TRILLEK_GLDEVICE_H_
+#ifndef _TRANQUILITYGLDEVICE_H_
+#define _TRANQUILITYGLDEVICE_H_
 
 #include "Common.h"
 #include "Mesh.h"

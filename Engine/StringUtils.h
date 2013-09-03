@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_STRING_UTILS_H_
-#define _TRILLEK_STRING_UTILS_H_
+#ifndef _TRANQUILITYSTRING_UTILS_H_
+#define _TRANQUILITYSTRING_UTILS_H_
 
 #include "common.h"
 

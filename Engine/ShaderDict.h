@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_SHADER_DIC_H_
-#define _TRILLEK_SHADER_DIC_H_
+#ifndef _TRANQUILITYSHADER_DIC_H_
+#define _TRANQUILITYSHADER_DIC_H_
 
 // shader input attributes
 #define SHADER_IN_POSITION "inputPosition"

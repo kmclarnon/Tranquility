@@ -1,5 +1,5 @@
-#ifndef _TRILLEK_SCENE_H_
-#define _TRILLEK_SCENE_H_
+#ifndef _TRANQUILITYSCENE_H_
+#define _TRANQUILITYSCENE_H_
 
 #include "Common.h"
 #include "Model.h"
