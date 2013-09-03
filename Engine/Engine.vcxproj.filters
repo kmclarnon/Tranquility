@@ -58,13 +58,22 @@
     <Filter Include="Source\Graphics\Renderer\Shader">
       <UniqueIdentifier>{6a84521a-79e5-4f62-aef4-81089c0ebb92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Include\Services\Input">
+      <UniqueIdentifier>{a24ce1a3-0530-45b6-bb8d-f13506de228e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Services\Input">
+      <UniqueIdentifier>{24b5f0d8-1021-409a-b591-7ced12339220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Services\Config">
+      <UniqueIdentifier>{6c342c56-5d09-41d3-a892-9da12f6038ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Services\Config">
+      <UniqueIdentifier>{12b136a5-0967-473d-b297-0b9a428a91c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ConfigParser.cpp">
-      <Filter>Source\Services</Filter>
     </ClCompile>
     <ClCompile Include="LogSystem.cpp">
       <Filter>Source\Services</Filter>
@@ -111,18 +120,18 @@
     <ClCompile Include="FPSCamera.cpp">
       <Filter>Source\Graphics\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigParser.cpp">
+      <Filter>Source\Services\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigItem.cpp">
+      <Filter>Source\Services\Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="LogSystem.h">
-      <Filter>Include\Services</Filter>
-    </ClInclude>
-    <ClInclude Include="ConfigParser.h">
-      <Filter>Include\Services</Filter>
-    </ClInclude>
-    <ClInclude Include="ConfigOptions.h">
       <Filter>Include\Services</Filter>
     </ClInclude>
     <ClInclude Include="StringUtils.h">
@@ -169,6 +178,27 @@
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Include\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="RawInputConstants.h">
+      <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputConstants.h">
+      <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputContext.h">
+      <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigParser.h">
+      <Filter>Include\Services\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigOptions.h">
+      <Filter>Include\Services\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigItem.h">
+      <Filter>Include\Services\Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

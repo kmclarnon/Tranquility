@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ConfigItem.cpp" />
     <ClCompile Include="ConfigParser.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FPSCamera.cpp" />
@@ -32,15 +33,20 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="ConfigItem.h" />
     <ClInclude Include="ConfigOptions.h" />
     <ClInclude Include="ConfigParser.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="FPSCamera.h" />
     <ClInclude Include="GLDevice.h" />
+    <ClInclude Include="InputConstants.h" />
+    <ClInclude Include="InputContext.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="LogSystem.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="RawInputConstants.h" />
     <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -83,8 +89,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\Dev\Utils\ImageMagick-6.8.6\Magick++\lib;E:\Dev\Utils\ImageMagick-6.8.6;E:\Dev\Utils\glm\glm;E:\Dev\Utils\assimp--3.0.1270-sdk\include;E:\Dev\Utils\glew-1.10.0\include;E:\Dev\OpenGL\sdl\include;C:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Dev\Utils\ImageMagick-6.8.6\VisualMagick\lib;E:\Dev\Utils\assimp--3.0.1270-sdk\lib\assimp_release-dll_win32;E:\Dev\Utils\glew-1.10.0\lib\Release\Win32;E:\Dev\OpenGL\sdl\VisualC\SDLmain\Win32\Debug;E:\Dev\OpenGL\sdl\VisualC\SDL\Win32\Debug;C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Dev\Utils\tinyxml2;E:\Dev\Utils\ImageMagick-6.8.6\Magick++\lib;E:\Dev\Utils\ImageMagick-6.8.6;E:\Dev\Utils\glm\glm;E:\Dev\Utils\assimp--3.0.1270-sdk\include;E:\Dev\Utils\glew-1.10.0\include;E:\Dev\OpenGL\sdl\include;C:\Program Files %28x86%29\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Dev\Utils\tinyxml2\tinyxml2\bin\Win32-Debug-Lib;E:\Dev\Utils\ImageMagick-6.8.6\VisualMagick\lib;E:\Dev\Utils\assimp--3.0.1270-sdk\lib\assimp_release-dll_win32;E:\Dev\Utils\glew-1.10.0\lib\Release\Win32;E:\Dev\OpenGL\sdl\VisualC\SDLmain\Win32\Debug;E:\Dev\OpenGL\sdl\VisualC\SDL\Win32\Debug;C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -94,8 +100,9 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;assimp.lib;CORE_DB_Magick++_.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;assimp.lib;tinyxml2.lib;CORE_DB_Magick++_.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <DelayLoadDLLs>CORE_DB_Magick++_.dll;SDL2.dll;SDL2main.dll;Assimp32.dll;tinyxml2.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
