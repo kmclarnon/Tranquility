@@ -8,7 +8,7 @@ FPSCamera::FPSCamera()
 void FPSCamera::update()
 {
     // update our position based on our speed
-    this->move(this->rightSpeed - this->leftSpeed, 0.0f, this->forwardSpeed - this->backwardSpeed);
+    this->move((float)this->rightSpeed - (float)this->leftSpeed, 0.0f, (float)this->forwardSpeed - (float)this->backwardSpeed);
 
     this->Camera::update();
 }
