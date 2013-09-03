@@ -123,9 +123,6 @@
     <ClCompile Include="ConfigParser.cpp">
       <Filter>Source\Services\Config</Filter>
     </ClCompile>
-    <ClCompile Include="ConfigItem.cpp">
-      <Filter>Source\Services\Config</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -195,9 +192,6 @@
       <Filter>Include\Services\Config</Filter>
     </ClInclude>
     <ClInclude Include="ConfigOptions.h">
-      <Filter>Include\Services\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="ConfigItem.h">
       <Filter>Include\Services\Config</Filter>
     </ClInclude>
   </ItemGroup>

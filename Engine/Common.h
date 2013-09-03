@@ -3,15 +3,15 @@
 
 //#define _HAS_ITERATOR_DEBUGGING  0
 //#define _SECURE_SCL 0
-
+    
 // GLEW Includes
 #include <GL\glew.h>
-
+    
 // SDL Includes
 #define NO_SDL_GLEXT
 #include "SDL.h"
 #include "SDL_opengl.h"
-
+    
 // GLM Includes
 #include "glm.hpp"
 #include "gtc/matrix_transform.hpp"
@@ -19,6 +19,8 @@
 
 #define INVALID_MATERIAL 0xFFFFFFFF
 #define INVALID_OGL_VALUE 0xFFFFFFFF
+
+#include <windows.h>
 
 #include <algorithm>
 #include <assert.h>
@@ -49,9 +51,6 @@
 #include <utility>
 #include <unordered_map>
 #include <vector>
-
-// typedefs
-typedef unsigned int uint;
 
 
 #endif

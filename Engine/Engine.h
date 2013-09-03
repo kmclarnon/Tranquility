@@ -28,7 +28,6 @@ private:
     std::unique_ptr<RenderDevice> renderer;
     SDL_Window *window;
     std::unique_ptr<Shader> shaderManager;
-    int width, height;
 
     // Services
     std::unique_ptr<LogSystem> logSys;

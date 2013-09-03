@@ -2,28 +2,45 @@
 #define _TRILLEK_CONFIG_PARSER_H_
 
 #include "Common.h"
-#include "StringUtils.h"
 #include "ConfigOptions.h"
-#include "ConfigItem.h"
 #include "LogSystem.h"
-#include "tinyxml2.h"
+#include "StringUtils.h"
 
 class ConfigParser
 {
 public:
-    ConfigParser(const LogSystem &logSys);
+    ConfigParser();
 
-    bool loadConfig(std::string file);
-    ConfigItem getSetting(std::string name);
+    void loadConfig(std::string configFile);
+
+    int getWindowWidth();
+    int getWindowHeight();
+    int getGLMajorVer();
+    int getGLMinorVer();
+    std::string getWindowName();
+    bool getVsync();
+    std::string getModelPath();
+    std::string getShaderPath();
+    std::string getLogDir();
 
 private:
-    bool loadConfigFile(std::string file);
+    bool parseLine(std::string &line);
+    bool parseWindowLine(std::string &line);
+    bool parseGraphicsLine(std::string &line);
+    bool parseAssetLine(std::string &line);
+    bool parseLoggingLine(std::string &line);
 
-    typedef std::map<std::string, ConfigItem> ConfigMap;
-    std::unique_ptr<ConfigMap> settings;
+    // Helpers
+    bool parseBool(std::string &line);
+    void loadDefaults();
 
-    // We do not own this
-    const LogSystem &logSys;
+private:
+    ConfigGroups currentGroup;
+
+    // config options
+    int windowHeight, windowWidth, openGLMajor, openGLMinor;
+    std::string windowName, shaderPath, modelPath, logDir;
+    bool vsync;
 };
 
 #endif

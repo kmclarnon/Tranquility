@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="ConfigItem.cpp" />
     <ClCompile Include="ConfigParser.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FPSCamera.cpp" />
@@ -33,7 +32,6 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Common.h" />
-    <ClInclude Include="ConfigItem.h" />
     <ClInclude Include="ConfigOptions.h" />
     <ClInclude Include="ConfigParser.h" />
     <ClInclude Include="Engine.h" />
