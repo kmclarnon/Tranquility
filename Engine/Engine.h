@@ -8,6 +8,7 @@
 #include "LogSystem.h"
 #include "SceneManager.h"
 #include "Timer.h"
+#include "InputManager.h"
 
 class Engine
 {
@@ -34,6 +35,7 @@ private:
     std::unique_ptr<ConfigParser> configParser;
     std::unique_ptr<SceneManager> sceneManager;
     std::unique_ptr<Timer> timer;
+    std::unique_ptr<InputManager> inputManager;
 };
 
 #endif

@@ -2,7 +2,7 @@
 #include "engine.h"
 
 #if(_MSC_VER >= 1400)
-    //#include "vld.h"
+    #include "vld.h"
 #endif
 
 int main(int argc, char* argv[])

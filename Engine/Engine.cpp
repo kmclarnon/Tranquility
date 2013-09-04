@@ -61,25 +61,23 @@ void Engine::run()
         this->timer->resetElapsed();
 
         // poll subsystem for events
-        if(SDL_PollEvent(&event)) 
+        while(SDL_PollEvent(&event)) 
         {
             switch(event.type) 
             {
                 case SDL_QUIT:
                     running = false;
                     break;
-                case SDL_EventType::SDL_KEYDOWN:
-                case SDL_EventType::SDL_KEYUP:
-                    //this->sceneManager->handleKeyboardEvent(event.key);
-                    break;
-                case SDL_EventType::SDL_MOUSEBUTTONDOWN:
-                case SDL_EventType::SDL_MOUSEBUTTONUP:
-                    //this->sceneManager->handleMouseEvent(event.button);
-                    break;
-                default:
-                    break;
+                default: 
+                    this->inputManager->parseRawInput(event);
             }
         }
+
+        // debug stuff for input manager
+        if(this->inputManager->isActionKeyDown(ACTION_FORWARD))
+            this->logSys->debug("Detected action key forward");
+        if(this->inputManager->isActionKeyDown(ACTION_BACKWARD))
+            this->logSys->debug("Detected action key backwards");
 
         // tell our scenes to update
         this->sceneManager->update();
@@ -186,6 +184,14 @@ bool Engine::initServices()
 
     // create our timer
     this->timer = std::unique_ptr<Timer>(new Timer());
+
+    // create our input manager
+    this->inputManager = std::unique_ptr<InputManager>(new InputManager(*this->logSys, *this->configParser));
+    if(!this->inputManager->init())
+    {
+        this->logSys->error("Failed to initialize input manager");
+        return false;
+    }
 
     return true;
 }

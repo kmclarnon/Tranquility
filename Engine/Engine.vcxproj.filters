@@ -123,6 +123,12 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>Source\Graphics\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source\Services\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="InputContext.cpp">
+      <Filter>Source\Services\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -176,15 +182,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Include\Services\Input</Filter>
     </ClInclude>
-    <ClInclude Include="RawInputConstants.h">
-      <Filter>Include\Services\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="InputConstants.h">
-      <Filter>Include\Services\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="InputContext.h">
-      <Filter>Include\Services\Input</Filter>
-    </ClInclude>
     <ClInclude Include="ConfigParser.h">
       <Filter>Include\Services\Config</Filter>
     </ClInclude>
@@ -193,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Include\Graphics\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="InputContext.h">
+      <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions.h">
+      <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="RawInpuMap.h">
+      <Filter>Include\Services\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
