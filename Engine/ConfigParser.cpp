@@ -79,7 +79,7 @@ void ConfigParser::loadConfig(std::string configFile)
         {
             try
             {
-                res =this->parseLine(line);
+                res = this->parseLine(line);
             }
             catch (std::exception* e)
             {
@@ -92,7 +92,9 @@ void ConfigParser::loadConfig(std::string configFile)
                 printf("Failed to parse line %i of %s\n", lineIndex,configFile.c_str());
                 loadFromDefaults = true;
             }
+            
         }
+        lineIndex++;
     }
 
     if(loadFromDefaults)
@@ -155,14 +157,17 @@ bool ConfigParser::parseWindowLine(std::string &line)
     if(elems.at(0) == WINDOW_OPTION_WIDTH)
     {
         this->windowWidth = std::stoi(elems.at(1));
+        return true;
     }
     else if(elems.at(0) == WINDOW_OPTION_HEIGHT)
     {
         this->windowHeight = std::stoi(elems.at(1));
+        return true;
     }
     else if(elems.at(0) == WINDOW_OPTION_TITLE)
     {
         this->windowName = elems.at(1);
+        return true;
     }
 
     return false;
@@ -177,14 +182,17 @@ bool ConfigParser::parseGraphicsLine(std::string &line)
     if(elems.at(0) == GRAPHICS_OPTION_VSYNC)
     {
         this->vsync = this->parseBool(elems.at(1));
+        return true;
     }
     else if(elems.at(0) == GRAPHICS_OPTION_OPENGL_MAJOR)
     {
         this->openGLMajor = std::stoi(elems.at(1));
+        return true;
     }
     else if(elems.at(0) == GRAPHICS_OPTION_OPENGL_MINOR)
     {
         this->openGLMinor = std::stoi(elems.at(1));
+        return true;
     }
 
     return false;
