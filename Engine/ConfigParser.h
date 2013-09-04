@@ -13,16 +13,16 @@ public:
 
     void loadConfig(std::string configFile);
 
-    int getWindowWidth();
-    int getWindowHeight();
-    int getGLMajorVer();
-    int getGLMinorVer();
-    std::string getWindowName();
-    bool getVsync();
-    std::string getModelDir();
-    std::string getShaderDir();
-    std::string getLogDir();
-    std::string getResourceDir();
+    int getWindowWidth() const;
+    int getWindowHeight() const;
+    int getGLMajorVer() const;
+    int getGLMinorVer() const;
+    const std::string& getWindowName() const;
+    bool getVsync() const;
+    const std::string& getModelDir() const;
+    const std::string& getShaderDir() const;
+    const std::string& getLogDir() const;
+    const std::string& getResourceDir() const;
 
 private:
     bool parseLine(std::string &line);

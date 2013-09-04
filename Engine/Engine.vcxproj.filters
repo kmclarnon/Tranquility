@@ -105,9 +105,6 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>Source\Graphics\Model</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Source\Services</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source\Graphics\Renderer\Shader</Filter>
     </ClCompile>
@@ -122,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="ConfigParser.cpp">
       <Filter>Source\Services\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source\Graphics\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,9 +154,6 @@
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Include\Graphics\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Include\Services</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>Include\Graphics\Model</Filter>
@@ -193,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="ConfigOptions.h">
       <Filter>Include\Services\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Include\Graphics\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

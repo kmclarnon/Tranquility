@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-Scene::Scene()
+Scene::Scene(const LogSystem &log, const ConfigParser &config) : logSys(log), config(config), model(log, config)
 {
 
 }

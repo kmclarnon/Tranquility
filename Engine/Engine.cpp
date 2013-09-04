@@ -148,7 +148,7 @@ bool Engine::initGraphics()
     int height = this->configParser->getWindowHeight();
 
     // create our scene manager
-    this->sceneManager = std::unique_ptr<SceneManager>(new SceneManager(*this->logSys, width, height, modelDir));
+    this->sceneManager = std::unique_ptr<SceneManager>(new SceneManager(*this->logSys, *this->configParser));
 
     // initialize our renderer
     this->renderer = std::unique_ptr<RenderDevice>(new RenderDevice(*this->logSys, *this->sceneManager, shaderDir));

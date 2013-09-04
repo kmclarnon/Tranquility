@@ -63,7 +63,7 @@ void Mesh::MeshEntry::Init(const std::vector<Vertex>& Vertices, const std::vecto
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * NumIndices, &Indices[0], GL_STATIC_DRAW);
 }
 
-Mesh::Mesh() : numVerticies(0), numFaces(0)
+Mesh::Mesh(const ConfigParser& config) : numVerticies(0), numFaces(0), config(config)
 {
 }
 
@@ -199,7 +199,7 @@ bool Mesh::initMaterials(const aiScene* pScene, const std::string& Filename)
         // Load a white texture in case the model does not include its own texture
         if (!textures[i]) 
         {
-            textures[i] = std::unique_ptr<Texture>(new Texture(GL_TEXTURE_2D, "white.png"));
+            textures[i] = std::unique_ptr<Texture>(new Texture(GL_TEXTURE_2D, config.getResourceDir() + "white.png"));
             res = textures[i]->load();
         }
     }

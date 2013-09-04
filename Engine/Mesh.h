@@ -6,6 +6,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include "Texture.h"
+#include "ConfigParser.h"
 
 struct Vertex
 {
@@ -27,7 +28,7 @@ struct Vertex
 class Mesh
 {
 public:
-    Mesh();
+    Mesh(const ConfigParser &config);
 
     bool loadMesh(const std::string& Filename);
     void render() const;
@@ -55,6 +56,9 @@ private:
 
     std::vector<MeshEntry> entries;
     std::vector<std::unique_ptr<Texture>> textures;
+
+    // we don't own this
+    const ConfigParser &config;
 
     //debug info
     int numVerticies;

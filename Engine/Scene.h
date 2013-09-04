@@ -9,7 +9,7 @@
 class Scene
 {
 public:
-    Scene();
+    Scene(const LogSystem& log, const ConfigParser &config);
 
     bool init(int width, int height, std::string &model);
     bool update();
@@ -22,6 +22,10 @@ private:
     Model model;
     Light light;
     Camera camera;
+
+    // we don't own these
+    const LogSystem &logSys;
+    const ConfigParser &config;
 };
 
 #endif

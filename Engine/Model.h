@@ -3,11 +3,13 @@
 
 #include "Common.h"
 #include "Mesh.h"
+#include "ConfigParser.h"
+#include "LogSystem.h"
 
 class Model
 {
 public:
-    Model();
+    Model(const LogSystem &log, const ConfigParser &config);
 
     bool loadFromFile(const std::string &fileName);
 
@@ -37,6 +39,10 @@ private:
 
     bool outdated;
     glm::mat4 modelMatrix;
+
+    // we don't own this
+    const LogSystem &logSys;
+    const ConfigParser &config;
 };
 
 #endif

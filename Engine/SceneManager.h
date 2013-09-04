@@ -3,12 +3,13 @@
 
 #include "Common.h"
 #include "LogSystem.h"
+#include "ConfigParser.h"
 #include "Scene.h"
 
 class SceneManager
 {
 public:
-    SceneManager(LogSystem &log, int width, int height, const std::string &modelDir);
+    SceneManager(const LogSystem &log, const ConfigParser &config);
 
     bool init();
     bool update();
@@ -17,11 +18,10 @@ public:
 
 private:
     Scene scene;
-    int width, height;
-    const std::string &modelDir;
 
     // we do not own this
     const LogSystem &logSys;
+    const ConfigParser &config;
 
 };
 

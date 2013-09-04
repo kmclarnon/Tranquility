@@ -6,52 +6,52 @@ ConfigParser::ConfigParser()
 {
 }
 
-int ConfigParser::getWindowWidth()
+int ConfigParser::getWindowWidth() const
 {
     return this->windowWidth;
 }
 
-int ConfigParser::getWindowHeight()
+int ConfigParser::getWindowHeight() const
 {
     return this->windowHeight;
 }
 
-int ConfigParser::getGLMajorVer()
+int ConfigParser::getGLMajorVer() const
 {
     return this->openGLMajor;
 }
 
-int ConfigParser::getGLMinorVer()
+int ConfigParser::getGLMinorVer() const
 {
     return this->openGLMinor;
 }
 
-std::string ConfigParser::getWindowName()
+const std::string& ConfigParser::getWindowName() const
 {
     return this->windowName;
 }
 
-bool ConfigParser::getVsync()
+bool ConfigParser::getVsync() const
 {
     return this->vsync;
 }
 
-std::string ConfigParser::getModelDir()
+const std::string& ConfigParser::getModelDir() const
 {
     return this->modelDir;
 }
 
-std::string ConfigParser::getShaderDir()
+const std::string& ConfigParser::getShaderDir() const
 {
     return this->shaderDir;
 }
 
-std::string ConfigParser::getLogDir()
+const std::string& ConfigParser::getLogDir() const
 {
     return this->logDir;
 }
 
-std::string ConfigParser::getResourceDir()
+const std::string& ConfigParser::getResourceDir() const
 {
     return this->resourceDir;
 }

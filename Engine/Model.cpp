@@ -1,6 +1,6 @@
 #include "Model.h"
 
-Model::Model() : outdated(false) 
+Model::Model(const LogSystem &log, const ConfigParser &config) : outdated(false), logSys(log), config(config), mesh(config)
 {
 
 }
