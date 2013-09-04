@@ -68,6 +68,7 @@ void ConfigParser::loadConfig(std::string configFile)
     std::string line;
     int lineIndex = 1;
     bool loadFromDefaults = false;
+    bool res = false;
 
     if(!ifs)
         loadFromDefaults = true;
@@ -78,11 +79,17 @@ void ConfigParser::loadConfig(std::string configFile)
         {
             try
             {
-                this->parseLine(line);
+                res =this->parseLine(line);
             }
             catch (std::exception* e)
             {
-                printf("Failed to parse line %i of %s: %s\n", lineIndex,configFile.c_str(), e->what());
+                printf("%s", e->what());
+                res = false;
+            }
+
+            if(!res)
+            {
+                printf("Failed to parse line %i of %s\n", lineIndex,configFile.c_str());
                 loadFromDefaults = true;
             }
         }
