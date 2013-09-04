@@ -25,7 +25,7 @@ const static std::string RESOURCE_OPTION_MODEL_PATH = "ModelDir";
 const static std::string RESOURCE_OPTION_SHADER_PATH = "ShaderDir";
 const static std::string LOGGING_OPTION_LOG_DIR = "LogDir";
 const static std::string RESOURCE_PATH = "ResourceDir";
-
+const static std::string FALLBACK_TEXTURE = "FallbackTexture";
 
 // Defaults
 const static std::string DEFAULT_CONFIG_FILE = "settings.cfg";
@@ -39,5 +39,6 @@ const static std::string DEFAULT_SHADER_DIR = "/Resources/Shaders/";
 const static std::string DEFAULT_MODEL_DIR = "/Resources/Models/";
 const static std::string DEFAULT_LOG_DIR = "/Logs/";
 const static std::string DEFAULT_RESOURCE_DIR = "/Resources/";
+const static std::string DEFAULT_FALLBACK_TEXTURE = DEFAULT_RESOURCE_DIR + "white.png";
 
 #endif

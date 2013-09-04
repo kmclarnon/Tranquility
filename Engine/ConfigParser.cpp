@@ -56,6 +56,11 @@ const std::string& ConfigParser::getResourceDir() const
     return this->resourceDir;
 }
 
+const std::string& ConfigParser::getFallbackTexture() const
+{
+    return this->fallbackTexture;
+}
+
 
 void ConfigParser::loadConfig(std::string configFile)
 {
@@ -199,6 +204,11 @@ bool ConfigParser::parseResourceLine(std::string &line)
         this->resourceDir = elems.at(1);
         return true;
     }
+    else if(elems.at(0) == FALLBACK_TEXTURE)
+    {
+        this->fallbackTexture = elems.at(1);
+        return true;
+    }
 
     return false;;
 }
@@ -265,4 +275,8 @@ void ConfigParser::loadDefaults()
     // check resource path
     if(this->resourceDir.size() == 0)
         this->resourceDir = DEFAULT_RESOURCE_DIR;
+
+    // check fallback texture path
+    if(this->fallbackTexture.size() == 0)
+        this->fallbackTexture = DEFAULT_FALLBACK_TEXTURE;
 }

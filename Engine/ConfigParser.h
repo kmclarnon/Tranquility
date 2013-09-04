@@ -23,6 +23,7 @@ public:
     const std::string& getShaderDir() const;
     const std::string& getLogDir() const;
     const std::string& getResourceDir() const;
+    const std::string& getFallbackTexture() const;
 
 private:
     bool parseLine(std::string &line);
@@ -40,7 +41,7 @@ private:
 
     // config options
     int windowHeight, windowWidth, openGLMajor, openGLMinor;
-    std::string windowName, shaderDir, modelDir, resourceDir, logDir;
+    std::string windowName, shaderDir, modelDir, resourceDir, logDir, fallbackTexture;
     bool vsync;
 };
 

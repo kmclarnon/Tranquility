@@ -56,7 +56,7 @@ void Engine::run()
     {
         // get our frame time
         frameTime = this->timer->getElapsedTimeInMilliSec();
-        this->logSys->debug("Elapsed time: %lf", frameTime);
+        //this->logSys->debug("Elapsed time: %lf", frameTime);
         // start measuring our current frame
         this->timer->resetElapsed();
 
