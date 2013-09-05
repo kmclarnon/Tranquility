@@ -73,11 +73,8 @@ void Engine::run()
             }
         }
 
-        // debug stuff for input manager
-        if(this->inputManager->isActionKeyDown(ACTION_FORWARD))
-            this->logSys->debug("Detected action key forward");
-        if(this->inputManager->isActionKeyDown(ACTION_BACKWARD))
-            this->logSys->debug("Detected action key backwards");
+        if(this->inputManager->isActionKeyDown(ACTION_QUIT))
+            running = false;
 
         // tell our scenes to update
         this->sceneManager->update();

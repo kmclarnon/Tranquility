@@ -5,11 +5,12 @@
 #include "LogSystem.h"
 #include "ConfigParser.h"
 #include "Scene.h"
+#include "InputManager.h"
 
 class SceneManager
 {
 public:
-    SceneManager(const LogSystem &log, const ConfigParser &config);
+    SceneManager(const LogSystem &log, const ConfigParser &config, const InputManager &input);
 
     bool init();
     bool update();
@@ -22,6 +23,7 @@ private:
     // we do not own this
     const LogSystem &logSys;
     const ConfigParser &config;
+    const InputManager &input;
 
 };
 

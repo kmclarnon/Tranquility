@@ -1,7 +1,7 @@
 #include "SceneManager.h"
 
-SceneManager::SceneManager(const LogSystem &log, const ConfigParser &config) 
-    : logSys(log), config(config), scene(log, config)
+SceneManager::SceneManager(const LogSystem &log, const ConfigParser &config, const InputManager &input) 
+    : logSys(log), config(config), scene(log, config), input(input)
 {
 
 }
