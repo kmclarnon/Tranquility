@@ -197,7 +197,7 @@
     <ClInclude Include="Actions.h">
       <Filter>Include\Services\Input</Filter>
     </ClInclude>
-    <ClInclude Include="RawInpuMap.h">
+    <ClInclude Include="RawInputMap.h">
       <Filter>Include\Services\Input</Filter>
     </ClInclude>
   </ItemGroup>
@@ -206,6 +206,12 @@
       <Filter>Resources</Filter>
     </None>
     <None Include="shader.vert">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Debug\fps.ctx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="..\Debug\settings.cfg">
       <Filter>Resources</Filter>
     </None>
   </ItemGroup>

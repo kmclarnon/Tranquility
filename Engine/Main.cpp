@@ -1,5 +1,5 @@
 #if(_MSC_VER >= 1400)
-    //#include "vld.h"
+    #include "vld.h"
 #endif
 
 #include "common.h"

@@ -3,7 +3,7 @@
 
 #include "Common.h"
 #include "Actions.h"
-#include "RawInpuMap.h"
+#include "RawInputMap.h"
 #include "StringUtils.h"
 
 class InputContext
