@@ -69,8 +69,17 @@ Action InputContext::getAction(std::string &action)
    auto it = InputContext::acMap.find(action);
    if(it == InputContext::acMap.end())
    {
-       this->logSys.error("Unable to parse Action: %s", action.c_str());
-       return Action::MAX_ACTIONS;
+       // attempt to correct action
+       // assume user forgot to specifiy "ACTION_" before the action name
+       std::string fixedAction = "ACTION_" + a;
+       it = InputContext::acMap.find(fixedAction);
+       if(it == InputContext::acMap.end())
+       {
+           this->logSys.error("Unable to parse Action: %s", action.c_str());
+           return Action::MAX_ACTIONS;
+       }
+       else
+           this->logSys.warning("Action corrected from %s to %s", a.c_str(), fixedAction.c_str());
    }
 
    return it->second;
@@ -82,8 +91,17 @@ RawKeyInput InputContext::getRawKeyInput(std::string &key)
     auto it = InputContext::rkcMap.find(k);
     if(it == InputContext::rkcMap.end())
     {
-        this->logSys.error("Unable to parse Key: %s", key.c_str());
-        return RawKeyInput::MAX_KEYS;
+        // attempt to correct key
+        // assume user forgot to specifiy "KEY_" before the key
+        std::string fixedKey = "KEY_" + k;
+        it = InputContext::rkcMap.find(fixedKey);
+        if(it == InputContext::rkcMap.end())
+        {
+            this->logSys.error("Unable to parse Key: %s", key.c_str());
+            return RawKeyInput::MAX_KEYS;
+        }
+        else
+            this->logSys.warning("Key corrected from %s to %s", k.c_str(), fixedKey.c_str());
     }
 
     return it->second;
