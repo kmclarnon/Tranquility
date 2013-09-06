@@ -1,6 +1,7 @@
 #include "Scene.h"
 
-Scene::Scene(const LogSystem &log, const ConfigParser &config) : logSys(log), config(config), model(log, config)
+Scene::Scene(const LogSystem &log, const ConfigParser &config, const InputManager &input) 
+    : logSys(log), config(config), model(log, config), input(input)
 {
 
 }
@@ -29,12 +30,24 @@ bool Scene::update()
 {
     static float rotation = 0.0f;
 
-    rotation += 0.0174532925f * 1.0f;
-    if(rotation > 360.0f)
+    if(input.isActionKeyDown(ACTION_RIGHT))
     {
-        rotation -= 360.0f;
+        rotation += 0.0174532925f * 1.0f;
+        if(rotation > 360.0f)
+        {
+            rotation -= 360.0f;
+        }
     }
-
+    
+    if(input.isActionKeyDown(ACTION_LEFT))
+    {
+        rotation -= 0.0174532925f * 1.0f;
+        if(rotation <= 0.0f)
+        {
+            rotation += 360.0f;
+        }
+    }
+    
     // update the camera
     this->camera.update();
 

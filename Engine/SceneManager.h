@@ -6,6 +6,7 @@
 #include "ConfigParser.h"
 #include "Scene.h"
 #include "InputManager.h"
+#include "SceneBuilder.h"
 
 class SceneManager
 {
@@ -14,11 +15,16 @@ public:
 
     bool init();
     bool update();
-
-    Scene& getActiveScene();
+    int addScene(std::string filename);
+    bool setActiveScene(int id);
+    const Scene& getActiveScene() const;
 
 private:
-    Scene scene;
+    std::map<int, std::unique_ptr<Scene>> sceneMap;
+    int idIndex;
+    int idActive;
+
+    std::unique_ptr<SceneBuilder> sceneBuilder;
 
     // we do not own this
     const LogSystem &logSys;

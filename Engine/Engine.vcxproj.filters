@@ -129,6 +129,9 @@
     <ClCompile Include="InputContext.cpp">
       <Filter>Source\Services\Input</Filter>
     </ClCompile>
+    <ClCompile Include="SceneBuilder.cpp">
+      <Filter>Source\Graphics\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="RawInputMap.h">
       <Filter>Include\Services\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBuilder.h">
+      <Filter>Include\Graphics\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,9 @@
 #define _TRANQUILITYSCENE_H_
 
 #include "Common.h"
+#include "LogSystem.h"
+#include "ConfigParser.h"
+#include "InputManager.h"
 #include "Model.h"
 #include "Camera.h"
 #include "Light.h"
@@ -9,7 +12,7 @@
 class Scene
 {
 public:
-    Scene(const LogSystem& log, const ConfigParser &config);
+    Scene(const LogSystem& log, const ConfigParser &config, const InputManager &input);
 
     bool init(int width, int height, std::string &model);
     bool update();
@@ -26,6 +29,7 @@ private:
     // we don't own these
     const LogSystem &logSys;
     const ConfigParser &config;
+    const InputManager &input;
 };
 
 #endif

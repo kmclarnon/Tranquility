@@ -25,6 +25,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="RenderDevice.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneBuilder.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="StringUtils.cpp" />
@@ -49,6 +50,7 @@
     <ClInclude Include="RawInputMap.h" />
     <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneBuilder.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderDict.h" />

@@ -57,7 +57,7 @@ bool RenderDevice::update()
     this->shader->useShader();
 
     // get our renderable scene
-    Scene &s = sceneManager.getActiveScene();
+    const Scene &s = sceneManager.getActiveScene();
 
     // set our camera matricies
     if(!this->shader->setShadderCameraUniforms(s.getModel().getModelMatrix(), s.getCamera().getViewMatrix(), s.getCamera().getProjectionMatrix()))
