@@ -179,9 +179,11 @@ bool Mesh::initMaterials(const aiScene* pScene, const std::string& Filename)
         {
             aiString Path;
 
-            if (pMaterial->GetTexture(aiTextureType_DIFFUSE, 0, &Path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) 
+            if (pMaterial->GetTexture(aiTextureType_UNKNOWN, 0, &Path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) 
             {
-                std::string FullPath = dir + "/" + Path.data;
+                StringPathUPtr sp = processPath(std::string(Path.data));
+
+                std::string FullPath = dir + "/" + sp->filename;
                 textures[i] = std::unique_ptr<Texture>(new Texture(GL_TEXTURE_2D, FullPath.c_str()));
 
                 if (!textures[i]->load()) 

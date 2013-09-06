@@ -7,6 +7,7 @@
 #include <assimp/postprocess.h>
 #include "Texture.h"
 #include "ConfigParser.h"
+#include "StringUtils.h"
 
 struct Vertex
 {
