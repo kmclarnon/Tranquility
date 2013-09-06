@@ -56,11 +56,6 @@ void InputContext::calcMouse()
     this->lastAbsY = this->absY;
 }
 
-void InputContext::clearNewState()
-{
-    this->actionStateNew.assign(this->actionStateNew.size(), false);
-}
-
 bool InputContext::parseLine(std::string &line)
 {
     std::vector<std::string> elems = split(line, '=');

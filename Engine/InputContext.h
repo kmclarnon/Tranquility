@@ -18,7 +18,6 @@ public:
 
     bool init(std::string &context);
     void calcMouse();
-    void clearNewState();
     
     // keyboard
     bool isActionKeyDown(Action a) const;
