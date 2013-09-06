@@ -12,7 +12,7 @@ const static std::string KEY_2_STRING = "KEY_2";
 const static std::string KEY_ESC_STRING = "KEY_ESC";
 const static std::string KEY_W_STRING = "KEY_W";
 const static std::string KEY_A_STRING = "KEY_A";
-const static std::string KEY_S_STRING = "KEY_A";
+const static std::string KEY_S_STRING = "KEY_S";
 const static std::string KEY_D_STRING = "KEY_D";
 
 const static char CONTEXT_COMMENT_CHAR = '#';
