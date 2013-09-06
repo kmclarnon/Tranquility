@@ -1,6 +1,9 @@
 #include "FPSCamera.h"
 
 FPSCamera::FPSCamera()
+    : frameTime(0.0), forwardSpeed(0.0), backwardSpeed(0.0), leftSpeed(0.0), 
+    rightSpeed(0.0), forwardStepSpeed(0.003), backwardStepSpeed(0.001), 
+    maxSpeed(0.01)
 {
 
 }
