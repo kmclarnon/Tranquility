@@ -20,7 +20,7 @@ public:
     bool isActionKeyDown(Action a) const;
 
 private:
-    std::map<std::string, InputContext> contextMap;
+    std::map<std::string, std::unique_ptr<InputContext>> contextMap;
     std::string activeContext;
     bool hasContext;
 

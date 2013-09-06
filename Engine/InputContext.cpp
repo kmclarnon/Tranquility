@@ -3,7 +3,7 @@
 InputContext::ActionConversionMap InputContext::acMap = InputContext::initACMap();
 InputContext::RawKeyConversionMap InputContext::rkcMap = InputContext::initRKCMap();
 
-InputContext::InputContext()
+InputContext::InputContext(const LogSystem &log) : logSys(log)
 {
     this->actionState.resize(MAX_ACTIONS + 1, false);
 }
@@ -18,7 +18,7 @@ bool InputContext::init(std::string &contextFile)
     if(!ifs)
         return false;
 
-    printf("Parsing InputContext file: %s\n", contextFile.c_str());
+    this->logSys.debug("Parsing InputContext file: %s", contextFile.c_str());
 
     while(std::getline(ifs, line))
     {
@@ -30,7 +30,7 @@ bool InputContext::init(std::string &contextFile)
             }
             catch (std::exception* e)
             {
-                printf("Failed to parse line %i of %s: %s\n", line, contextFile.c_str(), e->what());
+                this->logSys.error("Failed to parse line %i of %s: %s\n", line, contextFile.c_str(), e->what());
                 return false;;
             }
 
@@ -48,7 +48,7 @@ bool InputContext::parseLine(std::string &line)
     if(elems.size() != 2)
         return false;
 
-    printf("Mapping %s to %s\n", elems.at(0).c_str(), elems.at(1).c_str());
+    this->logSys.debug("Mapping %s to %s\n", elems.at(0).c_str(), elems.at(1).c_str());
     Action a = this->getAction(elems.at(0));
     if(a == Action::MAX_ACTIONS)
         return false;

@@ -5,6 +5,7 @@
 #include "Actions.h"
 #include "RawInputMap.h"
 #include "StringUtils.h"
+#include "LogSystem.h"
 
 class InputContext
 {
@@ -13,7 +14,7 @@ private:
     typedef std::map<std::string, RawKeyInput> RawKeyConversionMap;
 
 public:
-    InputContext();
+    InputContext(const LogSystem &log);
 
     bool init(std::string &context);
     bool isActionKeyDown(Action a) const;
@@ -35,6 +36,9 @@ private:
     std::map<RawKeyInput, Action> actionMap;
     static ActionConversionMap acMap;
     static RawKeyConversionMap rkcMap;
+
+    // we don't own this
+    const LogSystem &logSys;
 };
 
 #endif
