@@ -1,7 +1,8 @@
 #include "InputManager.h"
 
 InputManager::InputManager(const LogSystem &log, const ConfigParser &config)
-    : logSys(log), config(config), hasContext(false), window(nullptr), processInput(false)
+    : logSys(log), config(config), hasContext(false), window(nullptr), 
+    processInput(false)
 {
 
 }
@@ -9,7 +10,7 @@ InputManager::InputManager(const LogSystem &log, const ConfigParser &config)
 bool InputManager::init()
 {
     std::unique_ptr<InputContext> c = std::unique_ptr<InputContext>(new InputContext(this->logSys));
-    //test string
+    //test context
     std::string context = "fps.ctx";
     if(!c->init(context))
     {
@@ -25,7 +26,7 @@ bool InputManager::init()
     return true;
 }
 
-bool InputManager::update()
+bool InputManager::cleanup()
 {
     auto it = this->contextMap.find(this->activeContext);
     if(it == this->contextMap.end())
@@ -34,12 +35,14 @@ bool InputManager::update()
         return false;
     }
 
-    it->second->calcMouse();
+    it->second->clearRelative();
+
     return true;
 }
 
 void InputManager::setProcessInput(bool process)
 {
+    SDL_SetWindowGrab(this->window, (SDL_bool)process);
     this->processInput = process;
 }
 

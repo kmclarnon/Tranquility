@@ -13,7 +13,7 @@ public:
     InputManager(const LogSystem &log, const ConfigParser &config);
 
     bool init();
-    bool update();
+    bool cleanup();
 
     void setProcessInput(bool process);
 

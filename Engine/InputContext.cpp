@@ -4,8 +4,7 @@ InputContext::ActionConversionMap InputContext::acMap = InputContext::initACMap(
 InputContext::RawKeyConversionMap InputContext::rkcMap = InputContext::initRKCMap();
 
 InputContext::InputContext(const LogSystem &log) 
-    : logSys(log), relX(0), relY(0), absX(0), absY(0), scrollX(0), 
-    scrollY(0), lastAbsX(0), lastAbsY(0)
+    : logSys(log), relX(0), relY(0), absX(0), absY(0), scrollX(0), scrollY(0)
 {
     this->actionState.resize(MAX_ACTIONS + 1, false);
     this->actionStateNew.resize(MAX_ACTIONS + 1, false);
@@ -45,15 +44,10 @@ bool InputContext::init(std::string &contextFile)
     return true;
 }
 
-void InputContext::calcMouse()
+void InputContext::clearRelative()
 {
-    // calculate our relative mouse positions
-    this->relX = this->absX - this->lastAbsX;
-    this->relY = this->absY - this->lastAbsY;
-
-    // store this frames position for next frame
-    this->lastAbsX = this->absX;
-    this->lastAbsY = this->absY;
+    this->relX = 0;
+    this->relY = 0;
 }
 
 bool InputContext::parseLine(std::string &line)
@@ -177,6 +171,8 @@ void InputContext::parseRawMouseInput(SDL_MouseMotionEvent event)
     // so we calculate it in update instead
     this->absX = event.x;
     this->absY = event.y;
+    this->relX = event.xrel;
+    this->relY = event.yrel;
 }
 
 InputContext::ActionConversionMap InputContext::initACMap()

@@ -79,10 +79,6 @@ void Engine::run()
             }
         }
 
-        // process all of our frame input to prepare for the scene
-        if(!this->inputManager->update())
-            running = false;
-
         if(this->inputManager->isActionKeyDown(ACTION_QUIT))
             running = false;
 
@@ -91,6 +87,9 @@ void Engine::run()
 
         // draw next frame
         this->renderer->update();
+
+        // required processing for sdl foolishness
+        this->inputManager->cleanup();
     }  
 }
 

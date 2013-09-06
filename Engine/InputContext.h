@@ -17,7 +17,7 @@ public:
     InputContext(const LogSystem &log);
 
     bool init(std::string &context);
-    void calcMouse();
+    void clearRelative();
     
     // keyboard
     bool isActionKeyDown(Action a) const;
@@ -55,7 +55,6 @@ private:
     // mouse state
     int relX, relY;
     int absX, absY;
-    int lastAbsX, lastAbsY;
     int scrollX, scrollY;
 
     // we don't own this
