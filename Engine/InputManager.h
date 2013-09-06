@@ -15,9 +15,19 @@ public:
     bool init();
 
     void parseRawInput(SDL_Event event);
+    void attachWindow(SDL_Window *window);
 
     bool setActiveContext(const std::string &context);
+
+    // keyboard
     bool isActionKeyDown(Action a) const;
+
+    // mouse
+    int getMouseX() const;
+    int getMouseRelativeX() const;
+    int getMouseY() const;
+    int getMouseRelativeY() const;
+    void setMousePosition(int x, int y);
 
 private:
     std::map<std::string, std::unique_ptr<InputContext>> contextMap;
@@ -27,6 +37,7 @@ private:
     // we don't own these
     const LogSystem &logSys;
     const ConfigParser &config;
+    SDL_Window *window;
 };
 
 #endif

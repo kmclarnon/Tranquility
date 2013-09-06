@@ -1,7 +1,7 @@
 #include "InputManager.h"
 
 InputManager::InputManager(const LogSystem &log, const ConfigParser &config)
-    : logSys(log), config(config), hasContext(false)
+    : logSys(log), config(config), hasContext(false), window(nullptr)
 {
 
 }
@@ -23,6 +23,11 @@ bool InputManager::init()
         return this->setActiveContext(context);
 
     return true;
+}
+
+void InputManager::attachWindow(SDL_Window *window)
+{
+    this->window = window;
 }
 
 void InputManager::parseRawInput(SDL_Event event)
@@ -70,4 +75,38 @@ bool InputManager::isActionKeyDown(Action a) const
 {
     assert(this->hasContext);
     return this->contextMap.find(this->activeContext)->second->isActionKeyDown(a);
+}
+
+int InputManager::getMouseX() const
+{
+    assert(this->hasContext);
+    return this->contextMap.find(this->activeContext)->second->getMouseX();
+}
+
+int InputManager::getMouseRelativeX() const
+{
+    assert(this->hasContext);
+    return this->contextMap.find(this->activeContext)->second->getMouseRelativeX();
+}
+
+int InputManager::getMouseY() const
+{
+    assert(this->hasContext);
+    return this->contextMap.find(this->activeContext)->second->getMouseY();
+}
+
+int InputManager::getMouseRelativeY() const
+{
+    assert(this->hasContext);
+    return this->contextMap.find(this->activeContext)->second->getMouseRelativeY();
+}
+
+void InputManager::setMousePosition(int x, int y)
+{
+    if(!this->window)
+    {
+        SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
+        SDL_WarpMouseInWindow(this->window, x, y);
+        SDL_EventState(SDL_MOUSEMOTION, SDL_ENABLE);
+    }
 }

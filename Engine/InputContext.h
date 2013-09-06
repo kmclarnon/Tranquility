@@ -17,8 +17,17 @@ public:
     InputContext(const LogSystem &log);
 
     bool init(std::string &context);
+    
+    // keyboard
     bool isActionKeyDown(Action a) const;
 
+    // mouse
+    int getMouseX() const;
+    int getMouseRelativeX() const;
+    int getMouseY() const;
+    int getMouseRelativeY() const;
+
+    // event processing
     void parseRawKeyboardInput(SDL_KeyboardEvent event);
     void parseRawMouseInput(SDL_MouseButtonEvent event);
     void parseRawMouseInput(SDL_MouseWheelEvent event);
@@ -32,10 +41,18 @@ private:
     RawKeyInput getRawKeyInput(std::string &key);
 
 private:
+    // keyboard state
     std::vector<bool> actionState;
     std::map<RawKeyInput, Action> actionMap;
+
+    // context key mapping
     static ActionConversionMap acMap;
     static RawKeyConversionMap rkcMap;
+
+    // mouse state
+    int relX, relY;
+    int absX, absY;
+    int scrollX, scrollY;
 
     // we don't own this
     const LogSystem &logSys;

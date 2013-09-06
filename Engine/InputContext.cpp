@@ -3,7 +3,8 @@
 InputContext::ActionConversionMap InputContext::acMap = InputContext::initACMap();
 InputContext::RawKeyConversionMap InputContext::rkcMap = InputContext::initRKCMap();
 
-InputContext::InputContext(const LogSystem &log) : logSys(log)
+InputContext::InputContext(const LogSystem &log) 
+    : logSys(log), relX(0), relY(0), absX(0), absY(0), scrollX(0), scrollY(0)
 {
     this->actionState.resize(MAX_ACTIONS + 1, false);
 }
@@ -48,7 +49,7 @@ bool InputContext::parseLine(std::string &line)
     if(elems.size() != 2)
         return false;
 
-    this->logSys.debug("Mapping %s to %s\n", elems.at(0).c_str(), elems.at(1).c_str());
+    this->logSys.debug("Mapping %s to %s", elems.at(0).c_str(), elems.at(1).c_str());
     Action a = this->getAction(elems.at(0));
     if(a == Action::MAX_ACTIONS)
         return false;
@@ -87,6 +88,26 @@ bool InputContext::isActionKeyDown(Action a) const
     return this->actionState[a];
 }
 
+int InputContext::getMouseX() const
+{
+    return this->absX;
+}
+
+int InputContext::getMouseRelativeX() const
+{
+    return this->relX;
+}
+
+int InputContext::getMouseY() const
+{
+    return this->absY;
+}
+
+int InputContext::getMouseRelativeY() const
+{
+    return this->relY;
+}
+
 void InputContext::parseRawKeyboardInput(SDL_KeyboardEvent event)
 {
     auto it = this->actionMap.find((RawKeyInput)event.keysym.sym);
@@ -103,12 +124,16 @@ void InputContext::parseRawMouseInput(SDL_MouseButtonEvent event)
 
 void InputContext::parseRawMouseInput(SDL_MouseWheelEvent event)
 {
-
+    this->scrollX = event.x;
+    this->scrollY = event.y;
 }
 
 void InputContext::parseRawMouseInput(SDL_MouseMotionEvent event)
 {
-
+    this->absX = event.x;
+    this->absY = event.y;
+    this->relX = event.xrel;
+    this->relY = event.yrel;
 }
 
 InputContext::ActionConversionMap InputContext::initACMap()
