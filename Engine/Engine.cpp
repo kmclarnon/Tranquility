@@ -68,10 +68,20 @@ void Engine::run()
                 case SDL_QUIT:
                     running = false;
                     break;
+                case SDL_WINDOWEVENT:
+                    if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
+                        this->inputManager->setProcessInput(true);
+                    else if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
+                        this->inputManager->setProcessInput(false);
+                    break;
                 default: 
                     this->inputManager->parseRawInput(event);
             }
         }
+
+        // process all of our frame input to prepare for the scene
+        if(!this->inputManager->update())
+            running = false;
 
         if(this->inputManager->isActionKeyDown(ACTION_QUIT))
             running = false;

@@ -13,6 +13,9 @@ public:
     InputManager(const LogSystem &log, const ConfigParser &config);
 
     bool init();
+    bool update();
+
+    void setProcessInput(bool process);
 
     void parseRawInput(SDL_Event event);
     void attachWindow(SDL_Window *window);
@@ -21,18 +24,20 @@ public:
 
     // keyboard
     bool isActionKeyDown(Action a) const;
+    bool wasActionKeyPressed(Action a) const;
 
     // mouse
-    int getMouseX() const;
-    int getMouseRelativeX() const;
-    int getMouseY() const;
-    int getMouseRelativeY() const;
-    void setMousePosition(int x, int y);
+    int getMouseHorizontal() const;
+    int getMouseRelHorizontal() const;
+    int getMouseVertical() const;
+    int getMouseRelVertical() const;
+    void setMousePosition(int horizontalPos, int vertialPos) const;
 
 private:
     std::map<std::string, std::unique_ptr<InputContext>> contextMap;
     std::string activeContext;
     bool hasContext;
+    bool processInput;
 
     // we don't own these
     const LogSystem &logSys;

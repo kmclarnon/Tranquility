@@ -14,6 +14,7 @@ const static std::string KEY_W_STRING = "KEY_W";
 const static std::string KEY_A_STRING = "KEY_A";
 const static std::string KEY_S_STRING = "KEY_S";
 const static std::string KEY_D_STRING = "KEY_D";
+const static std::string KEY_SPACE_STRING = "KEY_SPACE";
 
 const static char CONTEXT_COMMENT_CHAR = '#';
 
@@ -30,6 +31,7 @@ typedef enum RawKeyInput
     KEY_A = SDLK_a,
     KEY_S = SDLK_s,
     KEY_D = SDLK_d,
+    KEY_SPACE = SDLK_SPACE,
     //KEY_3 = SDLK_3,
     //KEY_4 = SDLK_4,
     //KEY_5 = SDLK_5,

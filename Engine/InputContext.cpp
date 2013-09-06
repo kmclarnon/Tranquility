@@ -4,9 +4,11 @@ InputContext::ActionConversionMap InputContext::acMap = InputContext::initACMap(
 InputContext::RawKeyConversionMap InputContext::rkcMap = InputContext::initRKCMap();
 
 InputContext::InputContext(const LogSystem &log) 
-    : logSys(log), relX(0), relY(0), absX(0), absY(0), scrollX(0), scrollY(0)
+    : logSys(log), relX(0), relY(0), absX(0), absY(0), scrollX(0), 
+    scrollY(0), lastAbsX(0), lastAbsY(0)
 {
     this->actionState.resize(MAX_ACTIONS + 1, false);
+    this->actionStateNew.resize(MAX_ACTIONS + 1, false);
 }
 
 bool InputContext::init(std::string &contextFile)
@@ -41,6 +43,22 @@ bool InputContext::init(std::string &contextFile)
     }
 
     return true;
+}
+
+void InputContext::calcMouse()
+{
+    // calculate our relative mouse positions
+    this->relX = this->absX - this->lastAbsX;
+    this->relY = this->absY - this->lastAbsY;
+
+    // store this frames position for next frame
+    this->lastAbsX = this->absX;
+    this->lastAbsY = this->absY;
+}
+
+void InputContext::clearNewState()
+{
+    this->actionStateNew.assign(this->actionStateNew.size(), false);
 }
 
 bool InputContext::parseLine(std::string &line)
@@ -112,6 +130,11 @@ bool InputContext::isActionKeyDown(Action a) const
     return this->actionState[a];
 }
 
+bool InputContext::wasActionKeyPressed(Action a) const
+{
+    return this->actionStateNew[a];
+}
+
 int InputContext::getMouseX() const
 {
     return this->absX;
@@ -139,6 +162,7 @@ void InputContext::parseRawKeyboardInput(SDL_KeyboardEvent event)
         return;
 
     this->actionState[it->second] = (event.type == SDL_KEYDOWN);
+    this->actionStateNew[it->second] = (event.repeat == 0);
 }
 
 void InputContext::parseRawMouseInput(SDL_MouseButtonEvent event)
@@ -154,10 +178,10 @@ void InputContext::parseRawMouseInput(SDL_MouseWheelEvent event)
 
 void InputContext::parseRawMouseInput(SDL_MouseMotionEvent event)
 {
+    // storing SDL reported relative movement is problematic
+    // so we calculate it in update instead
     this->absX = event.x;
     this->absY = event.y;
-    this->relX = event.xrel;
-    this->relY = event.yrel;
 }
 
 InputContext::ActionConversionMap InputContext::initACMap()
@@ -168,6 +192,9 @@ InputContext::ActionConversionMap InputContext::initACMap()
     m[ACTION_BACKWARD_STRING] = ACTION_BACKWARD;
     m[ACTION_LEFT_STRING] = ACTION_LEFT;
     m[ACTION_RIGHT_STRING] = ACTION_RIGHT;
+    m[ACTION_UP_STRING] = ACTION_UP;
+    m[ACTION_DOWN_STRING] = ACTION_DOWN;
+    m[ACTION_JUMP_STRING] = ACTION_JUMP;
     return m;
 }
 
@@ -185,5 +212,6 @@ InputContext::RawKeyConversionMap InputContext::initRKCMap()
     m[KEY_A_STRING] = KEY_A;
     m[KEY_S_STRING] = KEY_S;
     m[KEY_D_STRING] = KEY_D;
+    m[KEY_SPACE_STRING] = KEY_SPACE;
     return m;
 }

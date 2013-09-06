@@ -17,9 +17,12 @@ public:
     InputContext(const LogSystem &log);
 
     bool init(std::string &context);
+    void calcMouse();
+    void clearNewState();
     
     // keyboard
     bool isActionKeyDown(Action a) const;
+    bool wasActionKeyPressed(Action a) const;
 
     // mouse
     int getMouseX() const;
@@ -43,6 +46,7 @@ private:
 private:
     // keyboard state
     std::vector<bool> actionState;
+    std::vector<bool> actionStateNew;
     std::map<RawKeyInput, Action> actionMap;
 
     // context key mapping
@@ -52,6 +56,7 @@ private:
     // mouse state
     int relX, relY;
     int absX, absY;
+    int lastAbsX, lastAbsY;
     int scrollX, scrollY;
 
     // we don't own this

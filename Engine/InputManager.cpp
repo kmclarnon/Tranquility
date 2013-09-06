@@ -1,7 +1,7 @@
 #include "InputManager.h"
 
 InputManager::InputManager(const LogSystem &log, const ConfigParser &config)
-    : logSys(log), config(config), hasContext(false), window(nullptr)
+    : logSys(log), config(config), hasContext(false), window(nullptr), processInput(false)
 {
 
 }
@@ -25,6 +25,24 @@ bool InputManager::init()
     return true;
 }
 
+bool InputManager::update()
+{
+    auto it = this->contextMap.find(this->activeContext);
+    if(it == this->contextMap.end())
+    {
+        this->logSys.error("Attempted to update input manager without context");
+        return false;
+    }
+
+    it->second->calcMouse();
+    return true;
+}
+
+void InputManager::setProcessInput(bool process)
+{
+    this->processInput = process;
+}
+
 void InputManager::attachWindow(SDL_Window *window)
 {
     this->window = window;
@@ -37,6 +55,10 @@ void InputManager::parseRawInput(SDL_Event event)
         this->logSys.error("Input manager has no context");
         return;
     }
+
+    // check if we're even supposed to be handling this input
+    if(!this->processInput)
+        return;
 
     switch(event.type)
     {
@@ -77,36 +99,42 @@ bool InputManager::isActionKeyDown(Action a) const
     return this->contextMap.find(this->activeContext)->second->isActionKeyDown(a);
 }
 
-int InputManager::getMouseX() const
+bool InputManager::wasActionKeyPressed(Action a) const
+{
+    assert(this->hasContext);
+    return this->contextMap.find(this->activeContext)->second->wasActionKeyPressed(a);
+}
+
+int InputManager::getMouseHorizontal() const
 {
     assert(this->hasContext);
     return this->contextMap.find(this->activeContext)->second->getMouseX();
 }
 
-int InputManager::getMouseRelativeX() const
+int InputManager::getMouseRelHorizontal() const
 {
     assert(this->hasContext);
     return this->contextMap.find(this->activeContext)->second->getMouseRelativeX();
 }
 
-int InputManager::getMouseY() const
+int InputManager::getMouseVertical() const
 {
     assert(this->hasContext);
     return this->contextMap.find(this->activeContext)->second->getMouseY();
 }
 
-int InputManager::getMouseRelativeY() const
+int InputManager::getMouseRelVertical() const
 {
     assert(this->hasContext);
     return this->contextMap.find(this->activeContext)->second->getMouseRelativeY();
 }
 
-void InputManager::setMousePosition(int x, int y)
+void InputManager::setMousePosition(int horizontalPos, int verticalPos) const
 {
-    if(!this->window)
+    if(this->window && this->processInput)
     {
         SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
-        SDL_WarpMouseInWindow(this->window, x, y);
+        SDL_WarpMouseInWindow(this->window, horizontalPos, verticalPos);
         SDL_EventState(SDL_MOUSEMOTION, SDL_ENABLE);
     }
 }
