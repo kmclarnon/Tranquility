@@ -6,7 +6,7 @@
 #include "ConfigParser.h"
 #include "InputManager.h"
 #include "Model.h"
-#include "Camera.h"
+#include "FPSCamera.h"
 #include "Light.h"
 
 class Scene
@@ -15,7 +15,7 @@ public:
     Scene(const LogSystem& log, const ConfigParser &config, const InputManager &input);
 
     bool init(int width, int height, std::string &model);
-    bool update();
+    bool update(double frameTime);
 
     const Light& getLight() const;
     const Camera& getCamera() const;
@@ -24,7 +24,7 @@ public:
 private:
     Model model;
     Light light;
-    Camera camera;
+    FPSCamera camera;
 
     // we don't own these
     const LogSystem &logSys;

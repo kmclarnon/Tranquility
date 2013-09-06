@@ -77,7 +77,7 @@ void Engine::run()
             running = false;
 
         // tell our scenes to update
-        this->sceneManager->update();
+        this->sceneManager->update(frameTime);
 
         // draw next frame
         this->renderer->update();
@@ -101,14 +101,17 @@ bool Engine::initWindow()
     int height = this->configParser->getWindowHeight();
 
     // create our window
-    window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, 
+    this->window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, 
         SDL_WINDOWPOS_CENTERED, width, height, 
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
-    if(!window)
+    if(!this->window)
     {
         this->logSys->error("Failed to create window: %s", SDL_GetError());
         return false;
     }
+
+    // this enables our input manager to manipulate the mouse position
+    this->inputManager->attachWindow(this->window);
 
     return true;
 }

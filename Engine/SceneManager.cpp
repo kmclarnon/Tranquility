@@ -18,7 +18,7 @@ bool SceneManager::init()
     if(!tempScene)
         return false;
 
-    tempScene->init(width, height, modelDir + "cube.obj");
+    tempScene->init(width, height, modelDir + "Mine/room.3ds");
 
     this->sceneMap.insert(std::pair<int, std::unique_ptr<Scene>>(this->idIndex, std::move(tempScene)));
     idIndex++;
@@ -26,13 +26,13 @@ bool SceneManager::init()
     return true;
 }
 
-bool SceneManager::update()
+bool SceneManager::update(double frameTime)
 {
     auto it = this->sceneMap.find(this->idActive);
     if(it == this->sceneMap.end())
         return false;
 
-    return it->second->update();
+    return it->second->update(frameTime);
 }
 
 int SceneManager::addScene(std::string filename)

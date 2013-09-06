@@ -14,7 +14,7 @@ public:
     SceneManager(const LogSystem &log, const ConfigParser &config, const InputManager &input);
 
     bool init();
-    bool update();
+    bool update(double frameTime);
     int addScene(std::string filename);
     bool setActiveScene(int id);
     const Scene& getActiveScene() const;

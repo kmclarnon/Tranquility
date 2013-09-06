@@ -28,8 +28,13 @@ bool Scene::init(int width, int height, std::string &model)
     return true;
 }
 
-bool Scene::update()
+bool Scene::update(double frameTime)
 {
+    this->camera.moveForward(frameTime, this->input.isActionKeyDown(ACTION_FORWARD));
+    this->camera.moveBackward(frameTime, this->input.isActionKeyDown(ACTION_BACKWARD));
+    this->camera.moveLeft(frameTime, this->input.isActionKeyDown(ACTION_LEFT));
+    this->camera.moveRight(frameTime, this->input.isActionKeyDown(ACTION_RIGHT));
+
     // update the camera
     this->camera.update();
 
