@@ -68,7 +68,10 @@ Action InputContext::getAction(std::string &action)
    std::string a = trim(action);
    auto it = InputContext::acMap.find(action);
    if(it == InputContext::acMap.end())
+   {
+       this->logSys.error("Unable to parse Action: %s", action.c_str());
        return Action::MAX_ACTIONS;
+   }
 
    return it->second;
 }
@@ -78,7 +81,10 @@ RawKeyInput InputContext::getRawKeyInput(std::string &key)
     std::string k = trim(key);
     auto it = InputContext::rkcMap.find(k);
     if(it == InputContext::rkcMap.end())
+    {
+        this->logSys.error("Unable to parse Key: %s", key.c_str());
         return RawKeyInput::MAX_KEYS;
+    }
 
     return it->second;
 }
@@ -157,5 +163,9 @@ InputContext::RawKeyConversionMap InputContext::initRKCMap()
     m[KEY_1_STRING] = KEY_1;
     m[KEY_2_STRING] = KEY_2;
     m[KEY_ESC_STRING] = KEY_ESC;
+    m[KEY_W_STRING] = KEY_W;
+    m[KEY_A_STRING] = KEY_A;
+    m[KEY_S_STRING] = KEY_S;
+    m[KEY_D_STRING] = KEY_D;
     return m;
 }
