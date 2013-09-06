@@ -8,12 +8,24 @@ std::vector<std::string> split(const std::string &s, char delim, std::vector<std
 std::vector<std::string> split(const std::string &s, char delim);
 
 // trim from the left
-std::string &ltrim(std::string &s);
+std::string& ltrim(std::string &s);
 
 // trim from the right
-std::string &rtrim(std::string &s);
+std::string& rtrim(std::string &s);
 
 // trim from both ends
-std::string &trim(std::string &s);
+std::string& trim(std::string &s);
+
+
+typedef struct StringPath
+{
+    std::string path;
+    std::string filename;
+};
+
+typedef std::unique_ptr<StringPath> StringPathUPtr;
+
+// process a string into a path directory and filename
+StringPathUPtr processPath(std::string &path);
 
 #endif
