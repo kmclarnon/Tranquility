@@ -52,8 +52,8 @@ StringPathUPtr processPath(std::string &path)
     }
     else
     {
-        s->path = path.substr(0, slashIndex);
-        s->filename = path.substr(slashIndex + 1, path.length());
+        s->path = path.substr(0, slashIndex + 1); // includes trailing /
+        s->filename = path.substr(slashIndex + 2, path.length());
     }
 
     return s;

@@ -17,7 +17,7 @@ std::string& rtrim(std::string &s);
 std::string& trim(std::string &s);
 
 
-typedef struct StringPath
+struct StringPath
 {
     std::string path;
     std::string filename;
