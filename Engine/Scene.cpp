@@ -10,7 +10,7 @@ bool Scene::init(int width, int height, std::string &model)
 {
     // set up our camera
     this->camera.setView(45.0f, width, height, 0.1f, 1000.0f);
-    this->camera.setPosition(0.0f, 0.0f, -10.0f);
+    this->camera.setPosition(0.0f, 0.0f, 0.0f);
 
     // set up our light
     this->light.setDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -21,37 +21,17 @@ bool Scene::init(int width, int height, std::string &model)
     if(!this->model.loadFromFile(model))
         return false;
 
+
     this->model.setScale(1.0f);
+    this->model.setOrientation(glm::quat(glm::vec3((float)M_PI/2, 0.0f, 0.0f)));
 
     return true;
 }
 
 bool Scene::update()
 {
-    static float rotation = 0.0f;
-
-    if(input.isActionKeyDown(ACTION_RIGHT))
-    {
-        rotation += 0.0174532925f * 1.0f;
-        if(rotation > 360.0f)
-        {
-            rotation -= 360.0f;
-        }
-    }
-    
-    if(input.isActionKeyDown(ACTION_LEFT))
-    {
-        rotation -= 0.0174532925f * 1.0f;
-        if(rotation <= 0.0f)
-        {
-            rotation += 360.0f;
-        }
-    }
-    
     // update the camera
     this->camera.update();
-
-    this->model.setOrientation(glm::quat(glm::vec3(0.0f, rotation, 0.0f)));
 
     // update the model
     this->model.update();
