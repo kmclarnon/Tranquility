@@ -1,19 +1,21 @@
 #ifndef _TRANQUILITYSHADER_DIC_H_
 #define _TRANQUILITYSHADER_DIC_H_
 
+#include "Common.h"
+
 // shader input attributes
-#define SHADER_IN_POSITION "inputPosition"
-#define SHADER_IN_TEXCOORD "inputTexCoord"
-#define SHADER_IN_NORMAL "inputNormal"
-#define SHADER_IN_COLOR "inputColor"
+const static std::string SHADER_IN_POSITION = "inputPosition";
+const static std::string SHADER_IN_TEXCOORD = "inputTexCoord";
+const static std::string SHADER_IN_NORMAL = "inputNormal";
+const static std::string SHADER_IN_COLOR = "inputColor";
 
 // shader uniforms
-#define SHADER_UNIFORM_WORLD "worldMatrix"
-#define SHADER_UNIFORM_PROJECTION "projectionMatrix"
-#define SHADER_UNIFORM_VIEW "viewMatrix"
-#define SHADER_UNIFORM_TEXTURE "shaderTexture"
-#define SHADER_UNIFORM_LIGHT_DIR "lightDirection"
-#define SHADER_UNIFORM_DIFFUSE_COLOR "diffuseLightColor"
-#define SHADER_UNIFORM_AMBIENT "ambientLight"
+const static std::string SHADER_UNIFORM_WORLD = "worldMatrix";
+const static std::string SHADER_UNIFORM_PROJECTION = "projectionMatrix";
+const static std::string SHADER_UNIFORM_VIEW = "viewMatrix";
+const static std::string SHADER_UNIFORM_TEXTURE = "shaderTexture";
+const static std::string SHADER_UNIFORM_LIGHT_DIR = "lightDirection";
+const static std::string SHADER_UNIFORM_DIFFUSE_COLOR = "diffuseLightColor";
+const static std::string SHADER_UNIFORM_AMBIENT = "ambientLight";
 
 #endif
